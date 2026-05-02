@@ -204,6 +204,7 @@ footer{border-top:1px solid var(--border);padding:14px 0;margin-top:4px;backgrou
         <th id="th-country" onclick="sortBy('country')">Country</th>
         <th onclick="sortBy('region')">Region</th>
         <th onclick="sortBy('bessGWh')">BESS (GW / GWh)</th>
+        <th onclick="sortBy('bessConstMW')">BESS Under Construction</th>
         <th onclick="sortBy('phsMW')">Pumped Hydro (GW)</th>
         <th onclick="sortBy('phsConstMW')">PHS Under Construction</th>
         <th onclick="sortBy('drStatus')">Demand Response</th>
@@ -301,21 +302,21 @@ function copyCite(id,btnId){
 const DATA = [
   // ── NORTH AMERICA ─────────────────────────────────────────────────────────
   {id:"840",country:"United States",flag:"🇺🇸",region:"North America",
-   bessMW:26000,bessGWh:56,phsMW:22000,phsGWh:550,phsConstMW:800,
+   bessMW:26000,bessGWh:56,bessConstMW:15000,phsMW:22000,phsGWh:550,phsConstMW:800,
    drStatus:"Established",drGW:35,policy:"IRA Tax Credits + Market",target:"Long-Duration Storage Shot: $0.05/kWh LCOS by 2035",
    maturity:"Leader",
-   keyProjects:"Moss Landing (750 MW, California) · Edwards Sanborn (3 GW/6 GWh planned) · Bath County PSH (3 GW, Virginia) · Raccoon Mountain PSH (1.6 GW, Tennessee) · Robert Moses-Niagara PSH",
-   notes:"US crossed a milestone in 2024 when cumulative BESS power (31.5 GW total) exceeded pumped hydro power (23.2 GW) for the first time. Added 11.9 GW of BESS in 2024 (55% YoY growth), led by California and Texas. EIA forecasts 15 GW added in 2025 and 24 GW in 2026 (record). IRA Investment Tax Credit for stand-alone storage has been transformative. PJM operates the world's largest demand response market (~35 GW enrolled). DoE Storage Shot targets $0.05/kWh LCOS for long-duration systems by 2035."},
+   keyProjects:"Moss Landing Vistra (Moss 300, ~750 MW NMC — destroyed in January 2025 fire, undergoing EPA-supervised decommissioning) · Edwards Sanborn (3 GW/6 GWh planned) · Bath County PSH (3 GW, Virginia) · Raccoon Mountain PSH (1.6 GW, Tennessee) · Robert Moses-Niagara PSH",
+   notes:"US crossed a milestone in 2024 when cumulative BESS power (31.5 GW total) exceeded pumped hydro power (23.2 GW) for the first time. Added 11.9 GW of BESS in 2024 (55% YoY growth), led by California and Texas. EIA forecasts 15 GW added in 2025 and 24 GW in 2026 (record). IRA Investment Tax Credit for stand-alone storage has been transformative. PJM operates the world's largest demand response market (~35 GW enrolled). DoE Storage Shot targets $0.05/kWh LCOS for long-duration systems by 2035. The January 16, 2025 fire at Vistra's Moss Landing Moss 300 facility (largest BESS site at the time) burned for two days, has been offline since, and is being decommissioned — accelerating an industry-wide shift to LFP chemistry and NFPA 855 fire-code compliance."},
 
   {id:"124",country:"Canada",flag:"🇨🇦",region:"North America",
-   bessMW:400,bessGWh:0.6,phsMW:1500,phsGWh:18,phsConstMW:2000,
+   bessMW:400,bessGWh:0.6,bessConstMW:1500,phsMW:1500,phsGWh:18,phsConstMW:2000,
    drStatus:"Growing",drGW:2,policy:"Provincial CIRs + Federal Clean Electricity Regulations",target:"Projected fastest-growing market 2025–2027 (Rho Motion)",
    maturity:"Active",
    keyProjects:"Muskrat Falls conventional hydro (Nova Scotia) · BC Hydro Site C (conventional) · Ontario IESO battery procurements · Alberta BESS auctions",
    notes:"Canada's BESS market is at an early but rapidly accelerating stage. Rho Motion projects Canada's cumulative installed capacity to reach 18.3 GWh by 2027 — the fastest growth rate globally for the 2025–2027 period. Provincial jurisdiction creates varied policy environments: Ontario's IESO has active battery storage procurement; Alberta's deregulated market incentivises merchant BESS. BC Hydro and Hydro-Québec have large conventional hydro fleets providing inherent flexibility."},
 
   {id:"484",country:"Mexico",flag:"🇲🇽",region:"North America",
-   bessMW:100,bessGWh:0.2,phsMW:100,phsGWh:1,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:500,phsMW:100,phsGWh:1,phsConstMW:0,
    drStatus:"Nascent",drGW:0.2,policy:"CENACE procurement (limited)",target:"None formally declared",
    maturity:"Emerging",
    keyProjects:"Tepezalá Solar + Storage (Aguascalientes) · CFE battery pilots",
@@ -323,196 +324,189 @@ const DATA = [
 
   // ── EUROPE ────────────────────────────────────────────────────────────────
   {id:"276",country:"Germany",flag:"🇩🇪",region:"Europe",
-   bessMW:2500,bessGWh:17.5,phsMW:7500,phsGWh:45,phsConstMW:500,
+   bessMW:2500,bessGWh:17.5,bessConstMW:5000,phsMW:7500,phsGWh:45,phsConstMW:500,
    drStatus:"Growing",drGW:1.5,policy:"Market (no specific storage target) + Grid fee exemption for BESS",target:"43–54 GW BESS needed by 2045 (Federal Network Agency estimate)",
    maturity:"Advanced",
    keyProjects:"10.3 GW total storage (Sep 2024, CNESA) inc 1.5M+ residential systems · LEAG Lausitz BESS (250 MW) · TenneT BESS tenders · Leopard Project (Netherlands-adjacent, 300 MW/1,200 MWh)",
    notes:"Germany has 17.5 GWh of installed stationary battery storage (end-2025 ISEA/RWTH Aachen estimate), of which ~85% is residential (behind-meter). Grid-scale BESS is ~2.5 GW/4.5 GWh. The Federal Network Agency's grid fee exemption (§118 EnWG) for large batteries has been extended and is critical to project economics. Germany uses Strategic Reserve for adequacy (no capacity market), so BESS earns primarily from FCR, aFRR, mFRR and energy arbitrage. The debate around a capacity market specifically for BESS is ongoing. PHS includes Goldisthal (1,060 MW), Markersbach (1,050 MW) and other alpine/upland facilities."},
 
   {id:"826",country:"United Kingdom",flag:"🇬🇧",region:"Europe",
-   bessMW:5100,bessGWh:7.0,phsMW:2830,phsGWh:26,phsConstMW:1300,
+   bessMW:6800,bessGWh:12.9,bessConstMW:8200,phsMW:2830,phsGWh:26,phsConstMW:1300,
    drStatus:"Established",drGW:2.6,policy:"Cap-and-Floor scheme (long-duration) + merchant markets",target:"30 GW storage by 2030 (UK government)",
    maturity:"Advanced",
    keyProjects:"Dinorwig PSH (1,728 MW/9 GWh, 'Electric Mountain') · Cruachan PSH (440 MW) · Coire Glas PSH (1,300 MW/30 GWh, under construction) · Minety BESS (100 MW) · Pillswood (196 MW/196 MWh)",
-   notes:"Great Britain is the world's second-most advanced BESS market per capita (1 GWh+ per million people). 5.1 GW operational BESS at end-2024 (Modo Energy), with 15.4 GW projected by 2027. Revenue streams: FFR, DCo FFR, Dynamic Regulation, BM (Balancing Mechanism). Demand Flexibility Service (DFS) contracted 2.6 GW in 2023-24. Energy Act 2023 provided long-duration storage definition and cap-and-floor regime — critical for Coire Glas economics. PHS: Dinorwig is Europe's fastest-responding large storage asset (0 to 1.32 GW in 16 seconds)."},
+   notes:"Great Britain reached ~6.8 GW / 12.9 GWh of operational grid-scale BESS by end-2025 (Solar Media / RenewableUK), up from 5.1 GW at end-2024 — making it the world's second-most advanced BESS market per capita (1+ GWh per million people). Roughly 4 GWh added in 2025 (a record year), with another 18+ GWh under construction. Revenue streams: FFR, DCo FFR, Dynamic Regulation, BM (Balancing Mechanism). Demand Flexibility Service (DFS) contracted 2.6 GW in 2023-24. Energy Act 2023 provided long-duration storage definition and cap-and-floor regime — Ofgem aims to approve the first LDES projects by Q2 2026; critical for Coire Glas economics. PHS: Dinorwig is Europe's fastest-responding large storage asset (0 to 1.32 GW in 16 seconds)."},
 
   {id:"250",country:"France",flag:"🇫🇷",region:"Europe",
-   bessMW:500,bessGWh:1.0,phsMW:5700,phsGWh:80,phsConstMW:1000,
+   bessMW:500,bessGWh:1.0,bessConstMW:1500,phsMW:5700,phsGWh:80,phsConstMW:1000,
    drStatus:"Growing",drGW:1.5,policy:"CRE auctions for storage + EDF STEP programme",target:"None specific; European Green Deal compatible",
    maturity:"Active",
    keyProjects:"STEP de Montézic (920 MW) · STEP de Grand'Maison (1,800 MW, Europe's largest) · Centrale de Revin (800 MW) · EDF battery pilots",
-   notes:"France's large PHS fleet (5.7 GW) is managed primarily by EDF and historically operated to complement nuclear baseload (pumping with cheap nuclear off-peak, discharging at peak). Grand'Maison (1,800 MW/7,500 GWh) remains one of Europe's largest PHS plants. Battery storage market growing but still relatively small. CRE (Energy Regulatory Commission) has conducted offshore wind-associated battery auctions. Demand response (effacement diffus) is growing via aggregators. Nuclear life extension plans (60+ years) reduce near-term storage urgency but RE growth drives long-term need."},
+   notes:"France's large PHS fleet (5.7 GW) is managed primarily by EDF and historically operated to complement nuclear baseload (pumping with cheap nuclear off-peak, discharging at peak). Grand'Maison (1,800 MW, ~8 GWh per pumping cycle; ~1,420 GWh annual generation) remains one of Europe's largest PHS plants. Battery storage market growing but still relatively small. CRE (Energy Regulatory Commission) has conducted offshore wind-associated battery auctions. Demand response (effacement diffus) is growing via aggregators. Nuclear life extension plans (60+ years) reduce near-term storage urgency but RE growth drives long-term need."},
 
   {id:"724",country:"Spain",flag:"🇪🇸",region:"Europe",
-   bessMW:800,bessGWh:1.5,phsMW:8600,phsGWh:90,phsConstMW:2000,
+   bessMW:800,bessGWh:1.5,bessConstMW:2000,phsMW:8600,phsGWh:90,phsConstMW:2000,
    drStatus:"Growing",drGW:1.0,policy:"PNIEC 2024 update targets 22.5 GW storage by 2030 + REE procurements",target:"22.5 GW installed energy storage by 2030 (PNIEC September 2024)",
    maturity:"Active",
-   keyProjects:"Tajo-Segura PSH (1,000 MW) · Aguilar de Campoo PSH (390 MW) · La Muela PSH (852 MW) · Multiple BESS projects in RESS auctions · Ingrid Capacity (300 MW BESS)",
-   notes:"Spain has Europe's largest pumped hydro capacity (8.6 GW) due to excellent topography — particularly the Pyrenees, Cantabrian coast and Iberian meseta. The updated National Energy and Climate Plan (PNIEC, September 2024) dramatically increased Spain's storage target to 22.5 GW by 2030. Battery auctions (REE-CNMC) are accelerating. Grid operator REE has major congestion issues in southern Spain (Andalusia) driving storage co-location with solar. Very high solar PV penetration (42%+ of generation in some months) makes storage economically compelling."},
+   keyProjects:"Cortes-La Muela complex (Iberdrola: La Muela I 634 MW + La Muela II 850 MW + Cortes II 290 MW = ~1.8 GW total — Europe's largest single PSH complex) · Tajo-Segura PSH (1,000 MW) · Aguilar de Campoo PSH (390 MW) · Multiple BESS projects in RESS auctions · Ingrid Capacity (300 MW BESS)",
+   notes:"Spain has Europe's largest pumped hydro capacity (8.6 GW) due to excellent topography — particularly the Pyrenees, Cantabrian coast and Iberian meseta. The updated National Energy and Climate Plan (PNIEC, September 2024) dramatically increased Spain's storage target to 22.5 GW by 2030. Battery auctions (REE-CNMC) are accelerating. Grid operator REE has major congestion issues in southern Spain (Andalusia) driving storage co-location with solar. Very high solar PV penetration (42%+ of generation in some months) makes storage economically compelling. Iberdrola's Cortes-La Muela PSH complex was instrumental in restoring power after the 28 April 2025 Iberian blackout, demonstrating PSH's black-start value."},
 
   {id:"380",country:"Italy",flag:"🇮🇹",region:"Europe",
-   bessMW:1500,bessGWh:2.5,phsMW:7700,phsGWh:60,phsConstMW:1500,
+   bessMW:1500,bessGWh:2.5,bessConstMW:2000,phsMW:7700,phsGWh:60,phsConstMW:1500,
    drStatus:"Growing",drGW:0.8,policy:"MACSE storage auctions (Terna) + PNRR funding",target:"71 GW storage by 2030 (PTE — National Energy and Climate Plan)",
    maturity:"Advanced",
    keyProjects:"Entracque PSH (1,000 MW) · Roncovalgrande PSH (1,007 MW) · Edolo PSH (1,000 MW) · TERNA BESS auctions (1.5 GW/1 GWh round 1 2022) · SSE battery projects (Sicily/Sardinia)",
    notes:"Italy's storage trajectory has accelerated dramatically. TERNA's MACSE (auction mechanism for essential capacity storage) round 1 in 2022 procured 1.5 GW/1 GWh of BESS, primarily in Sicily and Sardinia where grid islanding creates acute flexibility needs. A BNEF LDES opportunity exists: long-duration tenders planned for post-2030. PNRR (EU Recovery funds) allocated €3.6bn for grid flexibility. Italy's Alpine PHS is the backbone of its current flexibility. Edison, Enel and ERG are major BESS developers. New round of MACSE auctions post-2025 expected."},
 
-  {id:"724",country:"Spain",flag:"🇪🇸",region:"Europe",
-   bessMW:800,bessGWh:1.5,phsMW:8600,phsGWh:90,phsConstMW:2000,
-   drStatus:"Growing",drGW:1.0,policy:"PNIEC targets 22.5 GW storage by 2030",target:"22.5 GW by 2030",
-   maturity:"Active",
-   keyProjects:"La Muela PSH · Tajo-Segura PSH · Multiple RESS BESS auction winners",
-   notes:"Spain has Europe's largest pumped hydro capacity (8.6 GW) and an ambitious 22.5 GW storage target by 2030 (PNIEC update September 2024). Very high solar PV penetration drives BESS economics."},
-
   {id:"040",country:"Austria",flag:"🇦🇹",region:"Europe",
-   bessMW:300,bessGWh:0.5,phsMW:8500,phsGWh:120,phsConstMW:600,
+   bessMW:300,bessGWh:0.5,bessConstMW:100,phsMW:8500,phsGWh:120,phsConstMW:600,
    drStatus:"Growing",drGW:0.5,policy:"Alpine PHS dominant + merchant BESS market",target:"100% renewable by 2030 (national target)",
    maturity:"Active",
    keyProjects:"Kaprun-Limberg PSH (480 MW) · Nassfeld PSH (360 MW) · Kopswerk II (450 MW) · Malta Hauptstufe (730 MW) · Koralm BESS projects",
    notes:"Austria has one of the world's highest pumped hydro capacities relative to electricity demand (8.5 GW, ~120 GWh), built over decades exploiting the Austrian Alps. This makes Austria a major flexibility exporter to Germany, Italy and beyond. VERBUND AG operates the majority of PHS. Battery storage market is growing (300 MW BESS operational) but alpine PHS makes Austria less dependent on batteries than its neighbours. Austria's PSH is critical for Energiewende in Germany — Goldisthal-level arbitrage flows. 100% renewable electricity target by 2030 is being supported by expanded PHS."},
 
   {id:"620",country:"Portugal",flag:"🇵🇹",region:"Europe",
-   bessMW:300,bessGWh:0.6,phsMW:5800,phsGWh:100,phsConstMW:1800,
+   bessMW:300,bessGWh:0.6,bessConstMW:200,phsMW:5800,phsGWh:100,phsConstMW:1800,
    drStatus:"Nascent",drGW:0.3,policy:"ERSE auctions + significant PHS investment",target:"2030 PNEC renewable targets drive storage",
    maturity:"Active",
    keyProjects:"Alqueva PSH (520 MW) · Alto Lindoso PSH (630 MW) · Venda Nova III PSH (746 MW) · Salamonde II PSH (207 MW) · Foz Tua (263 MW, under construction)",
    notes:"Portugal has made very significant investments in pumped hydro along the Douro river cascade, reaching 5.8 GW of PHS — extraordinarily high for a country of 10 million people. EDP is the dominant operator. The combination of solar PV growth (very high irradiance) with this PHS fleet makes Portugal a unique flexibility hub. The 2022 'Iberian mechanism' capping gas prices temporarily distorted storage economics. Portugal is developing further PHS at Venda Nova IV and Paradela II. Battery storage market still nascent but growing."},
 
   {id:"756",country:"Switzerland",flag:"🇨🇭",region:"Europe",
-   bessMW:200,bessGWh:0.4,phsMW:2200,phsGWh:35,phsConstMW:400,
+   bessMW:200,bessGWh:0.4,bessConstMW:200,phsMW:2200,phsGWh:35,phsConstMW:400,
    drStatus:"Growing",drGW:0.3,policy:"Merchant market + ESTI safety regulations",target:"No formal target; energy law reform enabling storage",
    maturity:"Active",
    keyProjects:"Linthal 2015 PSH (1,000 MW/35 GWh, Axpo) · Grimsel PSH (500 MW) · Veytaux PSH (240 MW, Alpiq) · Nant de Drance PSH (900 MW, completed 2022)",
-   notes:"Switzerland completed the landmark Nant de Drance pumped hydro project (900 MW/20 GWh) in 2022 — Europe's first major new PSH in decades. Linthal 2015 (1,000 MW) began operation in 2017. Swiss PHS serves as a critical balancing reserve for Continental Europe — literally pumping alpine water when wind/solar surplus exists in Germany/France and discharging when demand peaks. 2023 Electricity Act referendum approved full electricity market liberalisation and defines storage as a separate grid asset class, unlocking further investment."},
+   notes:"Switzerland completed the landmark Nant de Drance pumped hydro project (900 MW/20 GWh) in 2022 — Europe's first major new PSH in decades. Linthal 2015 (1,000 MW) began operation in 2017. Swiss PHS serves as a critical balancing reserve for Continental Europe — literally pumping alpine water when wind/solar surplus exists in Germany/France and discharging when demand peaks. Storage is recognised as a separate grid asset class under the consolidated Energy/Electricity Supply Acts (in force from early 2025); however, full retail-market liberalisation remains pending the EU-Switzerland Electricity Agreement (concluded December 2024, awaiting Swiss parliamentary ratification expected 2026 and likely public referendum in 2027)."},
 
   {id:"528",country:"Netherlands",flag:"🇳🇱",region:"Europe",
-   bessMW:800,bessGWh:1.5,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:800,bessGWh:1.5,bessConstMW:1500,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Growing",drGW:0.5,policy:"Market (merchant) + TenneT ancillary contracts",target:"No specific target; relies on European market",
    maturity:"Active",
    keyProjects:"Giga Storage Leopard (300 MW/1,200 MWh) · Vattenfall Vattenfall BESS (Borssele) · Zenob BESS (multiple sites)",
    notes:"The Netherlands has no pumped hydro (flat terrain) and relies entirely on BESS and cross-border interconnection for storage. TenneT's grid connection constraints have driven demand for BESS for frequency services (FCR, aFRR). The Giga Storage Leopard project (300 MW/1,200 MWh) signed the first-ever time-limited grid contract with TenneT, a pioneering revenue model. Growing merchant BESS market is emerging from energy arbitrage between midday solar and evening peaks. Netherlands is among Europe's most congested grids, making local storage valuable."},
 
   {id:"056",country:"Belgium",flag:"🇧🇪",region:"Europe",
-   bessMW:500,bessGWh:1.0,phsMW:1300,phsGWh:9,phsConstMW:0,
+   bessMW:500,bessGWh:1.0,bessConstMW:300,phsMW:1300,phsGWh:9,phsConstMW:0,
    drStatus:"Growing",drGW:0.5,policy:"CRM (Capacity Market) + CREG framework for storage",target:"No storage-specific target",
    maturity:"Active",
    keyProjects:"Coo-Trois-Ponts PSH (1,162 MW/9 GWh, Engie) · Romsée BESS (25 MW, Engie) · ENECO battery farm projects",
    notes:"Belgium's Coo-Trois-Ponts is one of Western Europe's largest PSH plants (1,162 MW/9 GWh) and a critical flexibility resource for Benelux grids. The CRM (Capacity Remuneration Mechanism) includes batteries as eligible resources in auctions, providing long-term revenue certainty. Nuclear phase-out (Doel 4 and Tihange 3 life extensions now agreed to 2035) changes the storage calculus — nuclear provides inherent flexibility through slow ramping, so more batteries are needed as nuclear ages. Elia (TSO) has launched several battery tenders."},
 
   {id:"372",country:"Ireland",flag:"🇮🇪",region:"Europe",
-   bessMW:600,bessGWh:1.0,phsMW:300,phsGWh:2,phsConstMW:0,
+   bessMW:600,bessGWh:1.0,bessConstMW:500,phsMW:300,phsGWh:2,phsConstMW:0,
    drStatus:"Growing",drGW:0.3,policy:"I-SEM market + CRM (Capacity Market) + DS3 ancillary services",target:"80% renewable by 2030; EirGrid storage procurement ongoing",
    maturity:"Active",
    keyProjects:"Turlough Hill PSH (292 MW/2.1 GWh, ESB — Ireland's only PSH) · Dublin Waste-to-Energy BESS co-location · Battery pilots (Bord na Móna, SSE, EDF)",
    notes:"Ireland has one of the world's highest wind penetration rates and has been a global leader in high-instantaneous-renewables operation (over 95% wind on multiple occasions). DS3 (Delivering a Secure, Sustainable Electricity System) programme has been world-leading in defining System Service products for frequency response, inertia and reactive power — many now fulfilled by batteries. CRM includes batteries as eligible capacity. EirGrid's SNSP (System Non-Synchronous Penetration) limit has been raised progressively (now 95%) to accommodate renewable growth, requiring more storage. Turlough Hill PSH has been operational since 1974."},
 
   {id:"208",country:"Denmark",flag:"🇩🇰",region:"Europe",
-   bessMW:500,bessGWh:0.9,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:500,bessGWh:0.9,bessConstMW:300,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Growing",drGW:0.3,policy:"Energinet ancillary + market-based merchant BESS",target:"No PHS possible (flat terrain); targeting flexibility through interconnection",
    maturity:"Active",
    keyProjects:"Vattenfall Ørsted BESS projects · Danish TSO Energinet BESS tenders · Evida (gas grid) power-to-gas flexibility",
    notes:"Denmark has no pumped hydro (topographically impossible — flat peninsula) and relies on exceptional wind resource (>50% of annual generation), strong interconnection to Norway/Sweden/Germany, and growing BESS fleet for flexibility. Energinet procures frequency reserves (FCR-D, FCR-N) which batteries excel at. Denmark's power-to-gas (hydrogen) programme is also a significant flexibility resource. District heating (fjernvarme) provides thermal demand response at scale. One of the world's most advanced examples of high renewable penetration without long-duration storage."},
 
   {id:"246",country:"Finland",flag:"🇫🇮",region:"Europe",
-   bessMW:300,bessGWh:0.5,phsMW:100,phsGWh:1,phsConstMW:0,
+   bessMW:300,bessGWh:0.5,bessConstMW:200,phsMW:100,phsGWh:1,phsConstMW:0,
    drStatus:"Growing",drGW:0.3,policy:"Fingrid FCR procurements + Nordic market",target:"No specific BESS target; Olkiluoto 3 reduces urgency",
    maturity:"Active",
    keyProjects:"Hirvisuo BESS (22 MW, Fingrid pilot) · Nordic BESS developers active · Fortum hydro reservoirs as flexibility",
    notes:"Finland has ~100 MW of PHS (Vuotos area) and growing BESS. Fingrid has been active in procuring FCR (Frequency Containment Reserve) from batteries. Olkiluoto 3 EPR (1,600 MW, operational April 2023) significantly improved Finland's energy self-sufficiency and reduced peak imports. Finland's vast conventional hydro fleet (across ~6,000 hydro plants) provides inherent flexibility. Combined heat and power (CHP) plants also provide demand-side flexibility. Winter peak is the key challenge. Nordic electricity price volatility (driven by hydrology) creates compelling BESS arbitrage opportunities."},
 
   {id:"752",country:"Sweden",flag:"🇸🇪",region:"Europe",
-   bessMW:400,bessGWh:0.8,phsMW:300,phsGWh:2,phsConstMW:0,
+   bessMW:400,bessGWh:0.8,bessConstMW:200,phsMW:300,phsGWh:2,phsConstMW:0,
    drStatus:"Growing",drGW:0.5,policy:"Svenska kraftnät FCR/aFRR + merchant market",target:"No specific BESS target; RE 100% by 2040",
    maturity:"Active",
    keyProjects:"Vattenfall BESS pilots · Statkraft battery projects · Conventional hydro reservoirs (45 GW) act as primary flexibility",
    notes:"Sweden's ~45 GW of conventional hydro hydropower — particularly the large reservoirs in Norrland — provides extraordinary inherent flexibility that reduces near-term battery storage urgency. However, growing wind in southern Sweden (SE3/SE4 zones) and congestion between north and south is driving BESS investment in the south. Svenska kraftnät is the TSO and procures FCR/aFRR actively. Large industrial demand response (steel, paper mills) provides significant flexibility. The SE1-SE4 zonal price spread creates BESS arbitrage between zones."},
 
   {id:"578",country:"Norway",flag:"🇳🇴",region:"Europe",
-   bessMW:200,bessGWh:0.3,phsMW:1400,phsGWh:20,phsConstMW:200,
+   bessMW:200,bessGWh:0.3,bessConstMW:200,phsMW:1400,phsGWh:20,phsConstMW:200,
    drStatus:"Established",drGW:0.5,policy:"NVE/Statnett framework; hydro flexibility primary",target:"No BESS target — hydro is the battery",
    maturity:"Active",
    keyProjects:"Kvilldal PSH (1,240 MW) · Tonstad PSH (960 MW) · Borgund conventional hydro · LydiaLake flexibility reservoir",
    notes:"Norway's electricity system is essentially one giant battery — 33,000 lakes and reservoirs with a combined storage capacity of ~84 TWh (roughly equivalent to 1 week of European electricity consumption). This makes Norway the paradigmatic example of hydropower as long-duration energy storage. Kvilldal (1,240 MW) is Norway's largest PSH. Norway exports hydropower to Denmark, Germany and the UK via HVDC cables (Skagerrak, NordLink, North Sea Link) when European renewables are low and imports when Nordic prices are high. Battery BESS market small but growing."},
 
   {id:"300",country:"Greece",flag:"🇬🇷",region:"Europe",
-   bessMW:500,bessGWh:0.8,phsMW:1400,phsGWh:12,phsConstMW:800,
+   bessMW:500,bessGWh:0.8,bessConstMW:300,phsMW:1400,phsGWh:12,phsConstMW:800,
    drStatus:"Nascent",drGW:0.2,policy:"ADMIE/DAPEEP auctions + merchant growth",target:"12+ GW BESS applications under review",
    maturity:"Active",
    keyProjects:"Sfikia PSH (315 MW) · Thisavros PSH (384 MW) · Amfilochia PSH (680 MW, under construction) · 12.15 GW merchant BESS applications (investors submitted 2024–25)",
    notes:"Greece has seen an extraordinary merchant BESS investment surge — investors submitted applications for over 12.15 GW of standalone merchant battery storage by 2024–25, far exceeding the ~4.7 GW that authorities plan to approve. This reflects both Greece's extreme renewable curtailment problem (wind/solar output wasted due to limited grid capacity and storage) and the attractiveness of island grids. Amfilochia PSH (680 MW) is under construction. DAPEEP manages the balancing market and has conducted BESS-eligible ancillary service tenders. Interconnections to Italy (GRITA) and Bulgaria are key."},
 
   {id:"616",country:"Poland",flag:"🇵🇱",region:"Europe",
-   bessMW:300,bessGWh:0.5,phsMW:1800,phsGWh:14,phsConstMW:1000,
+   bessMW:300,bessGWh:0.5,bessConstMW:500,phsMW:1800,phsGWh:14,phsConstMW:1000,
    drStatus:"Growing",drGW:0.3,policy:"PSE auctions + capacity market eligible",target:"No formal storage target; CER Directive obligations",
    maturity:"Emerging",
    keyProjects:"Żarnowiec PSH (716 MW) · Porąbka-Żar PSH (500 MW) · Solina (200 MW, partial pumping) · New PSH at Młoty (1,000 MW, under development)",
    notes:"Poland's storage market is accelerating as coal plant closures require replacement flexibility. PSE (TSO) has conducted BESS auctions and the Capacity Market (launched 2021) includes batteries. PHS fleet (1.8 GW) was built primarily in the 1970s. New Młoty PSH project (1,000 MW) is in development — Poland's first new large PSH in decades. Wind integration challenges in northern Poland (Pomeranian wind zone) are driving BESS investment. Batteries are qualifying for capacity market contracts, providing revenue certainty."},
 
   {id:"642",country:"Romania",flag:"🇷🇴",region:"Europe",
-   bessMW:200,bessGWh:0.4,phsMW:500,phsGWh:4,phsConstMW:500,
+   bessMW:200,bessGWh:0.4,bessConstMW:0,phsMW:500,phsGWh:4,phsConstMW:500,
    drStatus:"Nascent",drGW:0.1,policy:"ANRE framework + EU funding (PNRR)",target:"Romania Energy Strategy 2021 includes storage targets",
    maturity:"Emerging",
    keyProjects:"Lotru-Ciunget PSH (510 MW) · Tarnița-Lăpuștești PSH (1,000 MW, long-delayed project under new consideration) · BESS pilots (Transelectrica)",
    notes:"Romania has a 510 MW PHS at Lotru-Ciunget operational. The much larger Tarnița-Lăpuștești (1,000 MW/8 GWh) project has been under development for decades and is receiving renewed attention under EU Green Deal funding. Romania has significant renewable potential (wind, solar, hydro) and is expanding rapidly. BESS market is early-stage but PNRR funding (EU Recovery plan) allocated funds for storage. Transelectrica has conducted BESS pilot projects."},
 
   {id:"100",country:"Bulgaria",flag:"🇧🇬",region:"Europe",
-   bessMW:100,bessGWh:0.2,phsMW:900,phsGWh:7,phsConstMW:300,
+   bessMW:100,bessGWh:0.2,bessConstMW:200,phsMW:900,phsGWh:7,phsConstMW:300,
    drStatus:"Nascent",drGW:0.1,policy:"EWRC framework + EU DSR Directive",target:"None specific",
    maturity:"Emerging",
    keyProjects:"Chaira PSH (864 MW) · Belmeken-Sestrimo PSH (375 MW) · Rila PSH (216 MW)",
    notes:"Bulgaria has significant PSH capacity at Chaira (864 MW/7 GWh) — one of the larger PSH plants in the Balkans. The plant is owned by NEK and provides critical flexibility for the Bulgarian-Romanian-Greek interconnection. Battery storage market is very early. Bulgaria is rapidly expanding solar PV, creating growing flexibility needs. ESO EAD (TSO) is working on BESS integration rules. Negative prices appeared for the first time in 2024, signalling the need for storage."},
 
   {id:"703",country:"Slovakia",flag:"🇸🇰",region:"Europe",
-   bessMW:100,bessGWh:0.1,phsMW:700,phsGWh:6,phsConstMW:0,
+   bessMW:100,bessGWh:0.1,bessConstMW:0,phsMW:700,phsGWh:6,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"SEPS framework; market-based",target:"None specific",
    maturity:"Emerging",
    keyProjects:"Čierny Váh PSH (735 MW/6 GWh) · Ipeľ (pumped storage)",
    notes:"Slovakia's Čierny Váh (735 MW) is its primary PHS plant, critical for grid balancing given very high nuclear share (55-60%). Battery storage market very early-stage. Mochovce 3 (440 MW) commissioning in 2023 changed Slovakia's generation mix significantly. SE (Slovenské Elektrárne) manages the nuclear and hydro fleet. SEPS is the TSO."},
 
   {id:"705",country:"Slovenia",flag:"🇸🇮",region:"Europe",
-   bessMW:50,bessGWh:0.1,phsMW:185,phsGWh:1.5,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:185,phsGWh:1.5,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"ELES framework; energy law reform enabling storage",target:"None specific",
    maturity:"Emerging",
    keyProjects:"Avče PSH (185 MW) · Klagenfurt conventional hydro adjacent",
    notes:"Slovenia has one purpose-built PSH (Avče, 185 MW) and several conventional hydro plants with partial pumping capability. As ACER's seat (Ljubljana), Slovenia is close to EU storage policy developments. Battery storage market minimal but growing with EU framework support."},
 
   {id:"191",country:"Croatia",flag:"🇭🇷",region:"Europe",
-   bessMW:50,bessGWh:0.1,phsMW:300,phsGWh:2.5,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:300,phsGWh:2.5,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"HEP framework + EU DSR Directive",target:"None specific",
    maturity:"Emerging",
    keyProjects:"Fužine PSH (90 MW) · Velebit PSH (240 MW) · Senj conventional hydro",
    notes:"Croatia has modest PSH capacity (340 MW) and minimal BESS. HEP (Hrvatska Elektroprivreda) manages conventional hydro and PSH. Croatia shares Krško NPP with Slovenia. Adriatic wind and solar expansion will drive storage needs. HOPS (TSO) working on flexibility products."},
 
   {id:"348",country:"Hungary",flag:"🇭🇺",region:"Europe",
-   bessMW:100,bessGWh:0.2,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"MAVIR framework + capacity market discussion",target:"None specific (discussion ongoing)",
    maturity:"Emerging",
    keyProjects:"BESS pilots on Hungarian grid · Proposed PSH study (Bukk hills) · Solar + storage developments",
-   notes:"Hungary has no operational PSH (flat terrain in most areas, limited topography for PHS). BESS market is early-stage. The Hungarian government has been studying PSH sites in the Bükk Hills. Solar PV has grown rapidly in Hungary (26.6 GW by end-2024 — extraordinary for a small country), creating urgent flexibility needs. MAVIR (TSO) managing growing challenges with solar integration."},
+   notes:"Hungary has no operational PSH (flat terrain in most areas, limited topography for PHS). BESS market is early-stage. The Hungarian government has been studying PSH sites in the Bükk Hills. Solar PV has grown rapidly in Hungary (~7.5 GW by end-2024, supplying 24.8% of national electricity — the highest share in the EU), creating urgent flexibility needs. MAVIR (TSO) managing growing challenges with solar integration."},
 
   {id:"804",country:"Ukraine",flag:"🇺🇦",region:"Europe",
-   bessMW:100,bessGWh:0.2,phsMW:2300,phsGWh:18,phsConstMW:2000,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:2300,phsGWh:18,phsConstMW:2000,
    drStatus:"Nascent",drGW:0.2,policy:"War emergency + Ukrenergo reconstruction programme",target:"Post-war reconstruction critical infrastructure",
    maturity:"Emerging",
    keyProjects:"Dniester PSHP (2,268 MW/18 GWh, partially operational; 2,000 MW additional under construction) · BESS from emergency aid partners",
    notes:"Ukraine's Dniester Pumped Storage Hydropower Plant (PSHP) is one of the largest PSH facilities in Europe at full build-out capacity (4,268 MW total). Currently ~2,268 MW operational with 2,000 MW under construction. The plant is crucial for post-war grid reconstruction. Russian attacks have destroyed significant conventional and thermal generation capacity. Distributed BESS from emergency aid (EU, US, Japan) is being installed. Ukrenergo is developing long-term grid flexibility plans with IEA and international partners."},
 
   {id:"688",country:"Serbia",flag:"🇷🇸",region:"Europe",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:600,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:600,
    drStatus:"Nascent",drGW:0.1,policy:"EMS TSO framework + Energy Community obligations",target:"Western Balkans Energy Transition Plan includes storage",
    maturity:"Early Stage",
    keyProjects:"Bistrica PSH (600 MW, planned) · Iron Gate conventional hydro flexibility",
    notes:"Serbia has no operational PSH but the Bistrica project (600 MW) is in development. Iron Gate (Djerdap) on the Danube (2.1 GW, shared with Romania) provides significant conventional hydro flexibility. EPS (state utility) is coal-dominant. Energy Community obligations require storage market rules. BESS market minimal."},
 
   {id:"440",country:"Lithuania",flag:"🇱🇹",region:"Europe",
-   bessMW:100,bessGWh:0.2,phsMW:900,phsGWh:7,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:100,phsMW:900,phsGWh:7,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"Litgrid framework + Baltic synchronisation investment",target:"Storage critical for post-BRELL continental synchronisation",
    maturity:"Emerging",
    keyProjects:"Kruonis PHPS (900 MW/7 GWh) · Baltic synchronisation BESS investments (TSO)",
    notes:"Kruonis Pumped Hydro Power Station (900 MW, ~7 GWh) is the largest energy storage facility in the Baltic states — historically essential for frequency regulation while operating in the Soviet BRELL system. Post-February 2025 synchronisation with Continental Europe, Kruonis serves new roles in frequency regulation alongside new TSO BESS investments. Lithuania has invested in BESS co-funded by EU and Baltic TSOs to ensure grid stability post-BRELL. Litgrid is procuring reserves actively."},
 
   {id:"442",country:"Luxembourg",flag:"🇱🇺",region:"Europe",
-   bessMW:50,bessGWh:0.1,phsMW:1300,phsGWh:9,phsConstMW:100,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:1300,phsGWh:9,phsConstMW:100,
    drStatus:"Nascent",drGW:0.1,policy:"Creos/ILR framework + merchant market",target:"100% renewable electricity (national goal)",
    maturity:"Active",
    keyProjects:"Vianden PSH (1,096 MW/9 GWh, Société Électrique de l'Our — SEO) · Vianden expansion (100 MW)",
@@ -520,77 +514,70 @@ const DATA = [
 
   // ── ASIA-PACIFIC ──────────────────────────────────────────────────────────
   {id:"156",country:"China",flag:"🇨🇳",region:"Asia-Pacific",
-   bessMW:73800,bessGWh:168,phsMW:58700,phsGWh:700,phsConstMW:300000,
+   bessMW:73800,bessGWh:168,bessConstMW:50000,phsMW:58700,phsGWh:700,phsConstMW:300000,
    drStatus:"Growing",drGW:50,policy:"Mandatory pairing (renewables must co-install storage) + Market-based + NEA 14th Five-Year Plan",target:"180 GW new-type BESS by 2027 (NEA Plan); 120 GW PSH by 2030",
    maturity:"Leader",
    keyProjects:"Fengning PSH (3,600 MW/42 GWh, world's largest — Hebei) · Huizhou PSH (2,400 MW) · CATL Ningde BESS fleet · SPIC BESS projects · Ningxia 500 MW vanadium flow battery",
    notes:"China is the world's dominant energy storage market by a wide margin. NEA reported 73.8 GW/168 GWh of new-type BESS (non-pumped hydro) at end-2024 — a 130% YoY increase — with 42.4 GW/101 GWh added in 2024 alone. LFP chemistry dominates (>98%). PSH: 58.7 GW operational (end-2024, after adding 7.75 GW in 2024), with 300+ GW under construction or approved — more than the rest of the world combined. Fengning (3.6 GW/42 GWh) in Hebei is the world's largest PSH. Policy-mandatory 'renewables plus storage' pairing drives deployment. CATL and BYD are global cell supply leaders. China targets 180 GW BESS by 2027."},
 
   {id:"036",country:"Australia",flag:"🇦🇺",region:"Asia-Pacific",
-   bessMW:5000,bessGWh:12,phsMW:2900,phsGWh:30,phsConstMW:2200,
+   bessMW:5000,bessGWh:12,bessConstMW:9000,phsMW:2900,phsGWh:30,phsConstMW:2200,
    drStatus:"Growing",drGW:1,policy:"Capacity Investment Scheme (CIS) + LTESA + merchant NEM",target:"AEMO ISP: 24 GW BESS by 2030; 49 GW storage by 2050",
    maturity:"Advanced",
-   keyProjects:"Snowy 2.0 PSH (2,200 MW/350 GWh, under construction) · Hornsdale Power Reserve (150 MW/194 MWh, South Australia) · Victoria Big Battery (300 MW/450 MWh) · Eraring Big Battery (460 MW) · Kidston PSH (250 MW, Queensland, completing)",
-   notes:"Australia is the world's third-largest utility battery market (2025), surpassing the UK. Achieved >1 GWh/million people — a global first. The Capacity Investment Scheme (CIS) is contracting 9 GW/36 GWh of storage by 2027. AEMO's Draft 2026 ISP requires 24 GW of grid-scale BESS by 2030 — 9 GW higher than the 2024 ISP. Snowy 2.0 (2.2 GW/350 GWh) is Australia's largest ever infrastructure project and will be the world's largest hydro battery. Hornsdale (Tesla/Neoen, South Australia) pioneered the global BESS market in 2017. Australia's energy-only NEM with high price cap (A$16,600/MWh) creates strong merchant BESS economics."},
+   keyProjects:"Snowy 2.0 PSH (2,200 MW/350 GWh, 67% complete Oct 2025, expected operational late 2028) · Hornsdale Power Reserve (150 MW/194 MWh, South Australia) · Victoria Big Battery (300 MW/450 MWh) · Eraring Big Battery (460 MW) · Kidston PSH (250 MW, Queensland, completing)",
+   notes:"Australia is the world's third-largest utility battery market (2025), surpassing the UK. Achieved >1 GWh/million people — a global first. The Capacity Investment Scheme (CIS) is contracting 9 GW/36 GWh of storage by 2027. AEMO's Draft 2026 ISP requires 24 GW of grid-scale BESS by 2030 — 9 GW higher than the 2024 ISP. Snowy 2.0 (2.2 GW/350 GWh) is Australia's largest ever infrastructure project, 67% complete as of October 2025 with operational target end-2028. Hornsdale (Tesla/Neoen, South Australia) pioneered the global BESS market in 2017. Australia's energy-only NEM with high price cap (A$20,300/MWh from 1 July 2025; rising in three steps to FY2027-28) creates strong merchant BESS economics."},
 
   {id:"392",country:"Japan",flag:"🇯🇵",region:"Asia-Pacific",
-   bessMW:1000,bessGWh:3,phsMW:22000,phsGWh:290,phsConstMW:1000,
+   bessMW:1000,bessGWh:3,bessConstMW:1500,phsMW:22000,phsGWh:290,phsConstMW:1000,
    drStatus:"Established",drGW:5,policy:"Long-Term Decarbonisation Auctions (capacity market) + FIT/FIP storage",target:"No specific BESS GW target; 60 GW PHS potential identified",
    maturity:"Advanced",
    keyProjects:"Kannagawa HPP (2,820 MW, Tokyo Electric) · Kazunogawa HPP (1,600 MW) · Okutataragi PSH (1,932 MW, Kansai Electric) · BESS at Hachijojima island · Kyushu BESS fleet (solar curtailment)",
    notes:"Japan has the world's second-largest pumped hydro capacity (22 GW/290 GWh estimated) — built primarily in the 1970s-80s as backup for nuclear baseload. Post-Fukushima, PSH has become critical for managing variable renewables. Kyushu Electric has been a pioneer in deploying grid-scale BESS to manage solar curtailment. The OCCTO-administered Long-term Decarbonisation Capacity Auction (launched 2024) includes storage as an eligible resource. Demand response has been growing through the Thermal Storage and Industrial DR programmes. Japan has 50/60Hz grid split (HVDC back-to-back), limiting flexibility exchange."},
 
   {id:"410",country:"South Korea",flag:"🇰🇷",region:"Asia-Pacific",
-   bessMW:5000,bessGWh:10,phsMW:4700,phsGWh:38,phsConstMW:500,
+   bessMW:5000,bessGWh:10,bessConstMW:2000,phsMW:4700,phsGWh:38,phsConstMW:500,
    drStatus:"Established",drGW:2,policy:"Renewable Energy Obligation (RPS) + ESS incentive (kREC bonus) + capacity payments",target:"No official BESS GW target in 11th BLEPE",
    maturity:"Advanced",
    keyProjects:"Yangyang PSH (1,000 MW) · Cheongpyeong PSH (400 MW) · Samsung SDI BESS fleet · LG Energy Solution grid projects · Yeongdong PSH (500 MW, under construction)",
    notes:"South Korea reached 4.4 GW/10.4 GWh of BESS by end-2023 (Blackridge/Statista) — among the highest globally despite 28 battery fires in 2017-2019 that temporarily halted the market. ESS incentive policies (REC bonus multiplier of 4-6× for BESS paired with renewable energy) drove the initial boom. Post-fire safety regulations stabilised the market. Samsung SDI, LG Energy Solution and SK Innovation are key domestic manufacturers. PSH: Yangyang (1,000 MW) and Cheongpyeong are the largest. Yeongdong (500 MW) is under construction with ANDRITZ variable-speed turbines. 11th Basic Plan for Electricity (BLEPE 2025) targets 21.7% renewable by 2030."},
 
   {id:"702",country:"Singapore",flag:"🇸🇬",region:"Asia-Pacific",
-   bessMW:500,bessGWh:1.0,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:500,bessGWh:1.0,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Growing",drGW:0.3,policy:"EMA Energy Storage Systems framework + Solar + Storage mandate",target:"200 MW ESS by 2025 (HDB) + Jurong Island LDES",
    maturity:"Active",
    keyProjects:"Sembcorp BESS (285 MW, Pulau Seraya) · Sunseap BESS · Jurong Island Long-Duration Storage (under planning) · HDB rooftop solar + storage programme",
    notes:"Singapore is the most storage-active city-state globally. With zero interconnection (island grid), battery storage is a strategic necessity. EMA mandates ESS for new solar developments. Sembcorp's 285 MW BESS on Jurong Island is one of Southeast Asia's largest. Singapore is developing long-duration storage solutions for Jurong Island. The hydrogen terminal (Keppel/Shell) may also contribute energy storage. Significant behind-meter residential and commercial storage growth through HDB solar programmes. EMA's Storage Regulatory Sandbox allows testing new storage business models."},
 
   {id:"356",country:"India",flag:"🇮🇳",region:"Asia-Pacific",
-   bessMW:500,bessGWh:1.0,phsMW:4700,phsGWh:40,phsConstMW:10000,
+   bessMW:500,bessGWh:1.0,bessConstMW:4000,phsMW:4700,phsGWh:40,phsConstMW:10000,
    drStatus:"Nascent",drGW:0.5,policy:"VGF (Viability Gap Funding) + Energy Storage Obligations (ESO) + ISTS charge waiver",target:"51–84 GW BESS by 2031-32 (National Electricity Plan Draft)",
    maturity:"Emerging",
    keyProjects:"Tehri PSHP Stage 2 (2,400 MW, under construction — India's largest) · Mahi Bajaj Sagar PSH (625 MW) · NTPC BESS tenders · Greenko BESS projects · 7.5 GW PSH pipeline (CEA approved April 2025)",
-   notes:"India's storage market is on the cusp of explosive growth. The Central Electricity Authority (CEA) approved detailed project reports for 7.5 GW of pumped hydro in April 2025, with 22 GW more planned for approval in FY2025-26. India has a massive 200 GW PSH potential. Tehri Stage 2 (2,400 GW — one of Asia's largest) is under construction; first unit commissioned June 2025 (GE Vernova). VGF scheme for BESS (₹3,760 crore for 4 GWh Phase 1) has triggered project development. ESO (Energy Storage Obligations) requiring DISCOMs to procure storage. 100% ISTS charge waiver for BESS makes economics compelling. IESA projects 346 GWh of installed capacity by 2033."},
-
-  {id:"392",country:"Japan",flag:"🇯🇵",region:"Asia-Pacific",
-   bessMW:1000,bessGWh:3,phsMW:22000,phsGWh:290,phsConstMW:1000,
-   drStatus:"Established",drGW:5,policy:"Long-Term Decarbonisation Auctions + FIP",target:"No specific GW targets",
-   maturity:"Advanced",
-   keyProjects:"Kannagawa PSH (2,820 MW) · Kazunogawa PSH (1,600 MW) · Okutataragi PSH (1,932 MW)",
-   notes:"Japan has world's second-largest pumped hydro fleet (22 GW). Battery storage market slowly growing driven by solar curtailment in Kyushu and policy auctions."},
+   notes:"India's storage market is on the cusp of explosive growth. The Central Electricity Authority (CEA) approved detailed project reports for 7.5 GW of pumped hydro in April 2025, with 22 GW more planned for approval in FY2025-26. India has a massive 200 GW PSH potential. Tehri Stage 2 (2,400 MW — one of Asia's largest) is under construction; first unit commissioned June 2025 (GE Vernova). VGF scheme for BESS (₹3,760 crore for 4 GWh Phase 1) has triggered project development. ESO (Energy Storage Obligations) requiring DISCOMs to procure storage. 100% ISTS charge waiver for BESS makes economics compelling. IESA projects 346 GWh of installed capacity by 2033."},
 
   {id:"704",country:"Vietnam",flag:"🇻🇳",region:"Asia-Pacific",
-   bessMW:100,bessGWh:0.2,phsMW:0,phsGWh:0,phsConstMW:2400,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:2400,
    drStatus:"None",drGW:0,policy:"PDP VIII targets; PSH under development",target:"PDP VIII includes PSH as key flexibility resource",
    maturity:"Early Stage",
    keyProjects:"Bac Ai PSH (1,200 MW, under development) · Tích Cốc PSH (1,200 MW, planned) · EVN BESS pilots",
    notes:"Vietnam's Power Development Plan VIII identifies pumped hydro as a critical long-duration storage resource. Two major PSH projects (Bac Ai and Tích Cốc, combined 2,400 MW) are in development. Vietnam's rapid solar growth (exceptional irradiance, >16 GW installed) is creating growing curtailment and flexibility challenges. EVN is studying BESS co-location with solar. New Electricity Law 2024 provides framework for storage. BESS market at pilot stage."},
 
   {id:"458",country:"Malaysia",flag:"🇲🇾",region:"Asia-Pacific",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:1000,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:1000,
    drStatus:"None",drGW:0,policy:"NETR 2023 includes storage as key pillar",target:"MESI reform + NETR target 70% RE by 2050",
    maturity:"Early Stage",
    keyProjects:"Ulu Jelai HPP (372 MW, conventional hydro) · Tanjung Bin BESS (under planning) · Proposed PSH in Sarawak",
    notes:"Malaysia is beginning to plan storage infrastructure as part of its National Energy Transition Roadmap (NETR 2023). A 1 GW PSH project is under study in Sarawak. TNB has conducted BESS feasibility studies. Large Scale Solar (LSS) auctions include storage provisions. BESS market at embryonic stage."},
 
   {id:"360",country:"Indonesia",flag:"🇮🇩",region:"Asia-Pacific",
-   bessMW:100,bessGWh:0.2,phsMW:0,phsGWh:0,phsConstMW:1040,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:1040,
    drStatus:"None",drGW:0,policy:"PLN procurement + JETP framework",target:"JETP agreement + G20 Energy Transition commitments",
    maturity:"Early Stage",
    keyProjects:"Cirata BESS (145 MW/145 MWh, floating solar + storage — largest floating solar+BESS globally) · Java-Bali PSH (1,040 MW, under construction) · PLN BESS pilots",
    notes:"Indonesia's Cirata project is notable: 145 MW/145 MWh BESS co-located with the world's largest floating solar array. Java-Bali PSH (1,040 MW) is under construction to support Java's grid stability as coal retires. PLN is conducting BESS pilots. Indonesia's Just Energy Transition Partnership (JETP) includes storage as a key enabling technology. The archipelago's island grid structure makes storage critical but challenging to finance."},
 
   {id:"764",country:"Thailand",flag:"🇹🇭",region:"Asia-Pacific",
-   bessMW:100,bessGWh:0.2,phsMW:100,phsGWh:1,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:100,phsGWh:1,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"EGAT procurement + PDP21 targets",target:"PDP21 includes storage targets",
    maturity:"Early Stage",
    keyProjects:"Lam Ta Khong PSH (500 MW/pumping 225 MW) · PTT/EGAT BESS pilots · Gulf Energy BESS",
@@ -598,28 +585,28 @@ const DATA = [
 
   // ── LATIN AMERICA ─────────────────────────────────────────────────────────
   {id:"076",country:"Brazil",flag:"🇧🇷",region:"Latin America",
-   bessMW:300,bessGWh:0.6,phsMW:300,phsGWh:3,phsConstMW:0,
+   bessMW:300,bessGWh:0.6,bessConstMW:500,phsMW:300,phsGWh:3,phsConstMW:0,
    drStatus:"Nascent",drGW:0.3,policy:"ANEEL auctions + hydro flexibility primary",target:"No formal BESS target; growing through ANEEL resolution",
    maturity:"Emerging",
    keyProjects:"São Simão conventional hydro with pumping capability · Corumbá PSH (300 MW) · BESS pilots (Cemig, EDP, Equatorial)",
    notes:"Brazil has one of the world's most complex electricity systems, dominated by large-scale hydropower (~60% of installed capacity). This hydropower acts as inherent storage — reservoirs can store energy for weeks or months (seasonal storage). Dedicated PSH is minimal (~300 MW at Corumbá). Battery storage market is early but growing rapidly — ANEEL resolution 1,001/2021 enabled BESS participation in ancillary services. Chinese BESS manufacturers (BYD, CATL) are actively entering the Brazilian market. Hydrology risk (El Niño droughts) is the primary driver of storage interest."},
 
   {id:"152",country:"Chile",flag:"🇨🇱",region:"Latin America",
-   bessMW:300,bessGWh:0.6,phsMW:0,phsGWh:0,phsConstMW:1800,
+   bessMW:300,bessGWh:0.6,bessConstMW:1500,phsMW:0,phsGWh:0,phsConstMW:1800,
    drStatus:"Nascent",drGW:0.2,policy:"CEN auctions + merchant development",target:"No specific target; 6 GW PSH potential identified",
    maturity:"Emerging",
    keyProjects:"Los Cóndores PSH (150 MW, Enel, completing) · Andes Solar + Storage · Multiple PSH projects under study (Los Cóndores stage 2, Rucue)",
    notes:"Chile's solar-rich Atacama region (world's highest capacity factors, >30%) is driving BESS investment as solar curtailment grows. Los Cóndores (150 MW) will be Chile's first significant PSH. Multiple PSH projects are under study to complement the extraordinary solar resource. Chile is a leader in lithium production (world's second-largest Li reserves), which ironically means cheaper battery inputs. The SEN (national grid) integrates both solar-rich north and hydro-rich south."},
 
   {id:"170",country:"Colombia",flag:"🇨🇴",region:"Latin America",
-   bessMW:100,bessGWh:0.2,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,policy:"XM/CREG framework developing",target:"None specific",
    maturity:"Emerging",
    keyProjects:"Ituango HPP conventional hydro (2,400 MW, completing) · BESS pilots (EPM, Celsia)",
    notes:"Colombia's electricity is dominated by large hydro (~65%), making El Niño a critical risk (major blackouts in drought years). Ituango HPP (2,400 MW) is the largest project in Colombia's history and will provide additional conventional hydro flexibility. PSH is not yet developed but growing solar (Caribbean coast) is creating interest in co-located BESS. XM (market operator) and CREG (regulator) are developing storage market rules."},
 
   {id:"218",country:"Ecuador",flag:"🇪🇨",region:"Latin America",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,policy:"CENACE framework; early stage",target:"None specific",
    maturity:"Early Stage",
    keyProjects:"Toachi-Pilatón HPP (conventional) · BESS pilot projects",
@@ -627,56 +614,56 @@ const DATA = [
 
   // ── MIDDLE EAST & AFRICA ──────────────────────────────────────────────────
   {id:"682",country:"Saudi Arabia",flag:"🇸🇦",region:"Middle East & Africa",
-   bessMW:1000,bessGWh:2.5,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:1000,bessGWh:2.5,bessConstMW:3000,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.3,policy:"REPDO auctions include storage + Vision 2030 targets",target:"50% renewable by 2030; storage essential for reliability",
    maturity:"Active",
    keyProjects:"Al-Shuaibah Solar+Storage (2.6 GW solar / 1,300 MWh BESS — world's largest solar+storage project) · NEOM battery storage · Masdar 19 GWh project (Abu Dhabi) adjacent",
    notes:"Saudi Arabia has become a major BESS deployment country driven by Vision 2030 and REPDO's large-scale renewable auctions, which increasingly mandate co-located storage. Al-Shuaibah (1,300 MWh BESS with 2.6 GW solar) is among the world's largest solar-plus-storage projects. BNEF projects Saudi Arabia will be among the fastest-growing BESS markets in 2026. The Kingdom's 100% gas-to-power grid with no hydro makes storage strategically critical for a 50% renewable target. NGSA (grid operator) is developing storage market rules. ARAMCO's energy transition arm is investing in storage technology."},
 
   {id:"784",country:"UAE",flag:"🇦🇪",region:"Middle East & Africa",
-   bessMW:500,bessGWh:1.0,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:500,bessGWh:1.0,bessConstMW:4750,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.3,policy:"ADWEC/DEWA procurement + Masdar projects",target:"None specific; major clean energy target (44% RE by 2050)",
    maturity:"Active",
-   keyProjects:"Masdar 19 GWh BESS project (Abu Dhabi, under construction — will be world's largest when complete) · DEWA BESS (100 MW, Dubai) · Al Dhafra Solar complex BESS co-location",
-   notes:"The UAE is rapidly scaling BESS deployment. Masdar's 19 GWh project in Abu Dhabi (begun construction September 2025) will become the world's largest BESS project when completed. DEWA in Dubai has deployed 100 MW of battery storage. The UAE's climate (extreme heat, high cooling demand, grid stability needs) and ambitious clean energy targets drive investment. IEA membership since 2023 signals strategic energy transition commitment."},
+   keyProjects:"Masdar/EWEC RTC project (5.2 GW solar + 19 GWh BESS, broke ground October 2025, target 2027) · DEWA BESS (100 MW, Dubai) · Al Dhafra Solar complex BESS co-location",
+   notes:"The UAE is rapidly scaling BESS deployment. Masdar's 19 GWh project in Abu Dhabi (broke ground October 2025) is paired with a 5.2 GW solar plant to deliver 1 GW of round-the-clock baseload renewable power and will become the world's largest BESS project when completed in 2027. DEWA in Dubai has deployed 100 MW of battery storage. The UAE's climate (extreme heat, high cooling demand, grid stability needs) and ambitious clean energy targets drive investment. IEA membership since 2023 signals strategic energy transition commitment."},
 
   {id:"504",country:"Morocco",flag:"🇲🇦",region:"Middle East & Africa",
-   bessMW:100,bessGWh:0.2,phsMW:500,phsGWh:4,phsConstMW:300,
+   bessMW:100,bessGWh:0.2,bessConstMW:100,phsMW:500,phsGWh:4,phsConstMW:300,
    drStatus:"None",drGW:0,policy:"MASEN/ONEE auctions + Xlinks cable project context",target:"52% renewable by 2030 (storage essential)",
    maturity:"Emerging",
    keyProjects:"Afourer PSH (464 MW/4 GWh) · Proposed Abdelmoumen PSH (350 MW, under development) · Noor solar complex + storage · BESS at wind farms",
    notes:"Morocco has the Afourer PSH (464 MW) and is developing Abdelmoumen PSH (350 MW). Morocco's MASEN manages large-scale renewable projects (Noor Ouarzazate CSP, Tarfaya wind) and is integrating storage co-location. The Xlinks Morocco-UK Power Project (3.6 GW solar/wind + HVDC to UK) would require significant storage at the Moroccan end. Morocco targets 52% renewable by 2030 and sees storage as enabling that target."},
 
   {id:"710",country:"South Africa",flag:"🇿🇦",region:"Middle East & Africa",
-   bessMW:400,bessGWh:0.8,phsMW:400,phsGWh:3,phsConstMW:1400,
+   bessMW:400,bessGWh:0.8,bessConstMW:500,phsMW:400,phsGWh:3,phsConstMW:1400,
    drStatus:"Nascent",drGW:0.2,policy:"REIPPPP storage auctions + embedded generation",target:"No specific storage GW target; load shedding driving investment",
    maturity:"Emerging",
-   keyProjects:"Ingula PSH (1,332 MW, under construction/completing) · Palmiet PSH (400 MW, operational) · Numerous C&I BESS (commercial/industrial) installations",
-   notes:"South Africa's load shedding crisis (Stage 2-6 rolling blackouts 2022-2024) has created a massive market for commercial and industrial battery storage — estimated 400 MW+/800 MWh+ of C&I BESS deployed by end-2024. Ingula PSH (1,332 MW) is nearly complete and will be Africa's largest pumped hydro facility. REIPPPP Round 5 includes storage auctions. Electricity Regulation Amendment Act (2022) enables a wholesale market that will eventually create storage revenue streams. Behind-the-meter BESS with solar is transforming South Africa's energy landscape — driven by grid unreliability rather than policy."},
+   keyProjects:"Ingula PSH (1,332 MW, fully operational since January 2017 — Africa's largest pumped hydro) · Drakensberg PSH (1,000 MW/27 GWh) · Palmiet PSH (400 MW, operational) · Numerous C&I BESS (commercial/industrial) installations",
+   notes:"South Africa's load shedding crisis (Stage 2-6 rolling blackouts 2022-2024) has created a massive market for commercial and industrial battery storage — estimated 400 MW+/800 MWh+ of C&I BESS deployed by end-2024. Ingula PSH (1,332 MW) was fully commissioned in January 2017 and is Africa's largest pumped hydro facility, alongside Drakensberg (1,000 MW/27 GWh). REIPPPP Round 5 includes storage auctions. Electricity Regulation Amendment Act (2022) enables a wholesale market that will eventually create storage revenue streams. Behind-the-meter BESS with solar is transforming South Africa's energy landscape — driven by grid unreliability rather than policy."},
 
   {id:"404",country:"Kenya",flag:"🇰🇪",region:"Middle East & Africa",
-   bessMW:100,bessGWh:0.2,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:100,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,policy:"Kenya National Electrification Strategy + EPRA storage framework",target:"No specific target; 100% clean by 2030 aspiration",
    maturity:"Early Stage",
    keyProjects:"KenGen Olkaria Geothermal complex flexibility · BESS pilots (KPLC) · Lake Turkana Wind storage interest",
    notes:"Kenya has ~85-90% renewable electricity (geothermal, hydro, wind, solar) — one of Africa's greenest grids. Storage needs are growing as Lake Turkana Wind Farm (310 MW, largest in Africa) and other variable renewables expand. BESS market nascent but EPRA is developing storage regulations. Geothermal power (Olkaria complex) provides excellent baseload that reduces short-duration storage urgency, but seasonal variations drive longer-duration needs."},
 
   {id:"818",country:"Egypt",flag:"🇪🇬",region:"Middle East & Africa",
-   bessMW:50,bessGWh:0.1,phsMW:200,phsGWh:2,phsConstMW:2100,
+   bessMW:50,bessGWh:0.1,bessConstMW:200,phsMW:200,phsGWh:2,phsConstMW:2100,
    drStatus:"None",drGW:0,policy:"EETC procurement + New Administrative Capital energy",target:"42% renewable by 2035",
    maturity:"Early Stage",
    keyProjects:"Attaqa PSH (2,100 MW, under construction — Africa's largest when complete) · Benban solar complex BESS potential · New Administrative Capital energy storage",
    notes:"Egypt's Attaqa PSH (2,100 MW) under construction near Suez Canal will be Africa's largest PSH when completed. This reflects Egypt's strategic ambition to become a regional electricity exporter. Benban solar (1.8 GW) is operational but without significant storage. Egypt's electricity interconnections with Libya, Jordan, Saudi Arabia and Sudan create export opportunity that requires storage for reliability. BESS market very early."},
 
   {id:"288",country:"Ghana",flag:"🇬🇭",region:"Middle East & Africa",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,policy:"PURC/GRIDCo framework; World Bank/AfDB energy projects",target:"None specific",
    maturity:"Early Stage",
    keyProjects:"Bui Dam conventional hydro (400 MW) · BESS pilots funded by World Bank",
    notes:"Ghana has significant excess conventional generation capacity but high AT&C losses and distribution constraints limit effective storage utilisation. World Bank projects include off-grid solar + storage for rural electrification. GRIDCo (transmission company) is studying grid-scale BESS for thermal smoothing. The potential for utility BESS remains largely unrealised."},
 
   {id:"566",country:"Nigeria",flag:"🇳🇬",region:"Middle East & Africa",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,policy:"NERC framework; off-grid solar + storage prioritised",target:"None specific for grid-scale",
    maturity:"Early Stage",
    keyProjects:"Azura-Edo conventional gas IPP · Rocky Mountain Institute Nigeria off-grid BESS · Solar home systems with batteries (millions of units)",
@@ -684,7 +671,7 @@ const DATA = [
 
   // ── TÜRKIYE ──────────────────────────────────────────────────────────────────
   {id:"792",country:"Türkiye",flag:"🇹🇷",region:"Middle East & Africa",
-   bessMW:50,bessGWh:0.1,phsMW:1900,phsGWh:14,phsConstMW:600,
+   bessMW:50,bessGWh:0.1,bessConstMW:2000,phsMW:1900,phsGWh:14,phsConstMW:600,
    drStatus:"Nascent",drGW:0.2,
    policy:"EPDK ön lisans sistemi + EPİAŞ esneklik piyasası (Flexibility Market)",
    target:"15 GW BESS by 2035 (Ulusal Enerji Planı); EPDK chair: up to 35 GW possible by 2035",
@@ -694,7 +681,7 @@ const DATA = [
 
   // ── RUSSIA ───────────────────────────────────────────────────────────────────
   {id:"643",country:"Russia",flag:"🇷🇺",region:"Europe",
-   bessMW:100,bessGWh:0.2,phsMW:1220,phsGWh:10,phsConstMW:840,
+   bessMW:100,bessGWh:0.2,bessConstMW:0,phsMW:1220,phsGWh:10,phsConstMW:840,
    drStatus:"None",drGW:0.2,
    policy:"Нет специальной политики для СНЭБ; дорожная карта СНЭ до 2030 г.; Росатом/Рэнера гигафабрика",
    target:"250 MW BESS tender issued September 2025; no formal deployment target",
@@ -704,7 +691,7 @@ const DATA = [
 
   // ── NEW ZEALAND ──────────────────────────────────────────────────────────────
   {id:"554",country:"New Zealand",flag:"🇳🇿",region:"Asia-Pacific",
-   bessMW:135,bessGWh:0.24,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:135,bessGWh:0.24,bessConstMW:400,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Growing",drGW:0.3,
    policy:"Electricity Authority BESS Investment Roadmap 2024 + merchant market (NEM-style spot)",
    target:"No specific GW target; 100% renewable by 2035 aspiration; Lake Onslow PSH revival under fast-track consent",
@@ -714,7 +701,7 @@ const DATA = [
 
   // ── ISRAEL ───────────────────────────────────────────────────────────────────
   {id:"376",country:"Israel",flag:"🇮🇱",region:"Middle East & Africa",
-   bessMW:300,bessGWh:1.2,phsMW:300,phsGWh:2,phsConstMW:0,
+   bessMW:300,bessGWh:1.2,bessConstMW:2000,phsMW:300,phsGWh:2,phsConstMW:0,
    drStatus:"Nascent",drGW:0.2,
    policy:"Ministry of Energy Gilboa government programme + Noga (ISO) high-voltage tenders + TMA national outline plan for storage",
    target:"2 GW/8 GWh needed for 30% renewable by 2030 (Noga/PUA); 4 GW bid in July 2024 tender",
@@ -724,7 +711,7 @@ const DATA = [
 
   // ── ARGENTINA ────────────────────────────────────────────────────────────────
   {id:"032",country:"Argentina",flag:"🇦🇷",region:"Latin America",
-   bessMW:18,bessGWh:0.04,phsMW:974,phsGWh:7,phsConstMW:0,
+   bessMW:18,bessGWh:0.04,bessConstMW:660,phsMW:974,phsGWh:7,phsConstMW:0,
    drStatus:"None",drGW:0.1,
    policy:"AlmaGBA auction + ENRE framework; no formal national BESS policy yet",
    target:"AlmaGBA: ~660 MW BESS for Buenos Aires Metro; no national target",
@@ -734,7 +721,7 @@ const DATA = [
 
   // ── PERU ─────────────────────────────────────────────────────────────────────
   {id:"604",country:"Peru",flag:"🇵🇪",region:"Latin America",
-   bessMW:27,bessGWh:0.05,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:27,bessGWh:0.05,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"Osinergmin storage study 2024 + COES framework; storage only within hybrid RE projects",
    target:"No formal target; storage regulation under development",
@@ -744,7 +731,7 @@ const DATA = [
 
   // ── IRAN ─────────────────────────────────────────────────────────────────────
   {id:"364",country:"Iran",flag:"🇮🇷",region:"Middle East & Africa",
-   bessMW:0,bessGWh:0,phsMW:1040,phsGWh:8,phsConstMW:0,
+   bessMW:0,bessGWh:0,bessConstMW:0,phsMW:1040,phsGWh:8,phsConstMW:0,
    drStatus:"None",drGW:0.1,
    policy:"Tavanir/IGMC regulated dispatch; no BESS market framework",
    target:"No storage target; 42% renewable by 2035 (nominal)",
@@ -754,7 +741,7 @@ const DATA = [
 
   // ── CZECH REPUBLIC ───────────────────────────────────────────────────────────
   {id:"203",country:"Czech Republic",flag:"🇨🇿",region:"Europe",
-   bessMW:100,bessGWh:0.2,phsMW:1100,phsGWh:9,phsConstMW:0,
+   bessMW:100,bessGWh:0.2,bessConstMW:200,phsMW:1100,phsGWh:9,phsConstMW:0,
    drStatus:"Growing",drGW:0.3,
    policy:"ERO market framework + EU DSR Directive compliance; CEPS FCR/aFRR procurement",
    target:"No specific BESS GW target; EU Energy Storage Strategy obligations",
@@ -764,7 +751,7 @@ const DATA = [
 
   // ── ESTONIA ──────────────────────────────────────────────────────────────────
   {id:"233",country:"Estonia",flag:"🇪🇪",region:"Europe",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:200,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Growing",drGW:0.1,
    policy:"Elering FCR/aFRR procurement + Baltic TSOs joint balancing market post-BRELL",
    target:"Storage critical for post-synchronisation frequency stability",
@@ -774,7 +761,7 @@ const DATA = [
 
   // ── PHILIPPINES ──────────────────────────────────────────────────────────────
   {id:"608",country:"Philippines",flag:"🇵🇭",region:"Asia-Pacific",
-   bessMW:200,bessGWh:0.4,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:200,bessGWh:0.4,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,
    policy:"IEMOP WESM ancillary market + ERC storage framework (developing) + GESP programme",
    target:"No specific GW target; DOE Green Energy Scenario to 2040 includes storage",
@@ -784,7 +771,7 @@ const DATA = [
 
   // ── KAZAKHSTAN ───────────────────────────────────────────────────────────────
   {id:"398",country:"Kazakhstan",flag:"🇰🇿",region:"Asia-Pacific",
-   bessMW:50,bessGWh:0.1,phsMW:200,phsGWh:1,phsConstMW:600,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:200,phsGWh:1,phsConstMW:600,
    drStatus:"None",drGW:0,
    policy:"Samruk-Energy + KOREM market; 2024 national generation development plan",
    target:"26 GW new capacity by 2040 plan (January 2024); 600 MW hydropower by 2027-28",
@@ -794,7 +781,7 @@ const DATA = [
 
   // ── PAKISTAN ─────────────────────────────────────────────────────────────────
   {id:"586",country:"Pakistan",flag:"🇵🇰",region:"Asia-Pacific",
-   bessMW:0,bessGWh:0,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:0,bessGWh:0,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"NEPRA framework; no formal storage policy; CPEC energy deal context",
    target:"No storage target; 30% renewable by 2030 (Indicative Generation Capacity Expansion Plan)",
@@ -804,7 +791,7 @@ const DATA = [
 
   // ── SRI LANKA ────────────────────────────────────────────────────────────────
   {id:"144",country:"Sri Lanka",flag:"🇱🇰",region:"Asia-Pacific",
-   bessMW:0,bessGWh:0,phsMW:0,phsGWh:0,phsConstMW:600,
+   bessMW:0,bessGWh:0,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:600,
    drStatus:"None",drGW:0,
    policy:"CEB (Ceylon Electricity Board) + PUCSL; Maya Oya PSH seeking international funding",
    target:"Maya Oya PSH 600 MW — under long-term funding discussions",
@@ -814,7 +801,7 @@ const DATA = [
 
   // ── JORDAN ───────────────────────────────────────────────────────────────────
   {id:"400",country:"Jordan",flag:"🇯🇴",region:"Middle East & Africa",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,
    policy:"NEPCO single-buyer + ERC developing storage framework; RE auction include storage provisions",
    target:"50% renewable by 2030; NEPCO storage procurement ongoing",
@@ -824,7 +811,7 @@ const DATA = [
 
   // ── DOMINICAN REPUBLIC ───────────────────────────────────────────────────────
   {id:"214",country:"Dominican Republic",flag:"🇩🇴",region:"Latin America",
-   bessMW:50,bessGWh:0.2,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.2,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"CNE (National Energy Commission) solar+storage mandate (February 2023 resolution)",
    target:"250-400 MW BESS by 2028 (market forecasts); 25% renewable by 2025 goal",
@@ -834,7 +821,7 @@ const DATA = [
 
   // ── HONDURAS ─────────────────────────────────────────────────────────────────
   {id:"340",country:"Honduras",flag:"🇭🇳",region:"Latin America",
-   bessMW:75,bessGWh:0.3,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:75,bessGWh:0.3,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"SERNA/ENEE framework; 2024 storage tender included in RE procurement",
    target:"75 MW/300 MWh awarded March 2024",
@@ -844,7 +831,7 @@ const DATA = [
 
   // ── PANAMA ───────────────────────────────────────────────────────────────────
   {id:"591",country:"Panama",flag:"🇵🇦",region:"Latin America",
-   bessMW:120,bessGWh:0.5,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:120,bessGWh:0.5,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"Nascent",drGW:0.1,
    policy:"ASEP regulatory consultation Jan 2024 + 500 MW renewables+storage tender (2024)",
    target:"120-150 MW BESS from 2024 tender; first market-based storage in Central America",
@@ -854,7 +841,7 @@ const DATA = [
 
   // ── ALGERIA ──────────────────────────────────────────────────────────────────
   {id:"012",country:"Algeria",flag:"🇩🇿",region:"Middle East & Africa",
-   bessMW:0,bessGWh:0,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:0,bessGWh:0,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"Sonelgaz state utility; no formal storage policy; CREDEG RE framework",
    target:"27% renewable by 2030 (nominal); Algeria-Italy electricity export ambitions",
@@ -864,7 +851,7 @@ const DATA = [
 
   // ── TUNISIA ──────────────────────────────────────────────────────────────────
   {id:"788",country:"Tunisia",flag:"🇹🇳",region:"Middle East & Africa",
-   bessMW:0,bessGWh:0,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:0,bessGWh:0,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"ANME + STEG framework; ELMED Italy-Tunisia HVDC as near-term flexibility strategy",
    target:"35% renewable by 2030 (PNER plan)",
@@ -874,7 +861,7 @@ const DATA = [
 
   // ── TANZANIA ─────────────────────────────────────────────────────────────────
   {id:"834",country:"Tanzania",flag:"🇹🇿",region:"Middle East & Africa",
-   bessMW:50,bessGWh:0.1,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:50,bessGWh:0.1,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"TANESCO state utility + REA rural electrification; AfDB/World Bank mini-grid BESS support",
    target:"No grid-scale storage target; rural electrification solar+BESS programme",
@@ -884,7 +871,7 @@ const DATA = [
 
   // ── CUBA ─────────────────────────────────────────────────────────────────────
   {id:"192",country:"Cuba",flag:"🇨🇺",region:"Latin America",
-   bessMW:120,bessGWh:0.5,phsMW:0,phsGWh:0,phsConstMW:0,
+   bessMW:120,bessGWh:0.5,bessConstMW:0,phsMW:0,phsGWh:0,phsConstMW:0,
    drStatus:"None",drGW:0,
    policy:"MINEM state utility; emergency Chinese BESS deployment programme 2024",
    target:"No formal target; 500 MW solar+storage emergency programme (Chinese co-operation)",
@@ -1068,16 +1055,22 @@ document.addEventListener('click',e=>{if(!e.target.closest('#countryPanel')&&!e.
 // ── STATS ─────────────────────────────────────────────────────────────────────
 function buildStats(){
   const total=FDATA.length;
-  const totalBESS=FDATA.reduce((s,d)=>s+(d.bessGWh||0),0);
+  const totalBESS_GWh=FDATA.reduce((s,d)=>s+(d.bessGWh||0),0);
+  const totalBESS_GW=FDATA.reduce((s,d)=>s+(d.bessMW||0),0)/1000;
+  const bessConst=FDATA.reduce((s,d)=>s+(d.bessConstMW||0),0)/1000;
   const totalPHS=FDATA.reduce((s,d)=>s+(d.phsMW||0),0)/1000;
+  const totalPHS_GWh=FDATA.reduce((s,d)=>s+(d.phsGWh||0),0);
   const withTarget=FDATA.filter(d=>d.target&&!d.target.startsWith('None')&&!d.target.startsWith('No ') ).length;
   const withDR=FDATA.filter(d=>d.drStatus==='Established'||d.drStatus==='Growing').length;
   const phsConst=FDATA.reduce((s,d)=>s+(d.phsConstMW||0),0)/1000;
   const leaders=FDATA.filter(d=>d.maturity==='Leader'||d.maturity==='Advanced').length;
   const cards=[
     {cls:'a',n:total,l:'Countries tracked',s:'Incl. ~55 jurisdictions'},
-    {cls:'g',n:Math.round(totalBESS)+'GWh',l:'Total BESS tracked',s:'Grid-scale, end-2024'},
-    {cls:'b',n:Math.round(totalPHS)+'GW',l:'Total PHS tracked',s:'Operational pumped hydro'},
+    {cls:'g',n:Math.round(totalBESS_GW)+'GW',l:'Total BESS power',s:'Grid-scale operational'},
+    {cls:'g',n:Math.round(totalBESS_GWh)+'GWh',l:'Total BESS energy',s:'Grid-scale operational'},
+    {cls:'t',n:Math.round(bessConst)+'GW',l:'BESS under construction',s:'Pipeline build-out'},
+    {cls:'b',n:Math.round(totalPHS)+'GW',l:'Total PHS power',s:'Operational pumped hydro'},
+    {cls:'b',n:Math.round(totalPHS_GWh).toLocaleString()+'GWh',l:'Total PHS energy',s:'Operational pumped hydro'},
     {cls:'t',n:Math.round(phsConst)+'GW',l:'PHS under construction',s:'Global pipeline'},
     {cls:'o',n:withTarget,l:'With storage targets',s:'Official policy goals'},
     {cls:'p',n:withDR,l:'With DR programs',s:'Established or growing'},
@@ -1178,6 +1171,7 @@ function render(){
         <span class="td-num" style="color:${bessColor(d.bessGWh)}">${(d.bessMW/1000).toFixed(1)} GW / ${d.bessGWh} GWh</span>
         <div class="td-bar-wrap"><div class="td-track"><div class="td-fill" style="width:${d.bessGWh/maxBESS*100}%;background:${bessColor(d.bessGWh)}"></div></div></div>
       </td>
+      <td style="color:${(d.bessConstMW||0)>0?'var(--green)':'var(--text4)'};font-size:.6rem">${(d.bessConstMW||0)>0?((d.bessConstMW/1000).toFixed(1)+' GW 🔋'):'—'}</td>
       <td>
         <span class="td-num" style="color:${phsColor(d.phsMW)}">${(d.phsMW/1000).toFixed(1)} GW</span>
         <div class="td-bar-wrap"><div class="td-track"><div class="td-fill" style="width:${(d.phsMW||0)/maxPHS*100}%;background:${phsColor(d.phsMW)}"></div></div></div>
