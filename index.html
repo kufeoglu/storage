@@ -134,8 +134,58 @@ footer{border-top:1px solid var(--border);padding:14px 0;margin-top:4px;backgrou
 .copy-btn:hover{border-color:var(--bdhi);color:var(--amber);}
 .copy-btn.copied{background:rgba(42,122,78,.07);border-color:rgba(42,122,78,.3);color:var(--green);}
 ::-webkit-scrollbar{width:5px;height:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#c9bfa6;border-radius:3px;}
+.lb-outer{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:0 1px 4px rgba(26,22,18,.06);}
+.lb-ctrl{display:flex;gap:8px;flex-wrap:wrap;padding:9px 14px;border-bottom:1px solid var(--border);align-items:center;background:var(--card);}
+.lb-row{display:grid;grid-template-columns:48px minmax(180px,260px) 1fr 62px;gap:8px 14px;padding:9px 14px;border-bottom:1px solid rgba(26,22,18,.05);align-items:center;cursor:pointer;transition:background .12s;}
+.lb-row:hover{background:rgba(238,232,216,.38);}
+.lb-row:last-child{border-bottom:none;}
+.lb-rk{font-family:var(--fm);font-size:.68rem;font-weight:600;color:var(--text3);text-align:center;line-height:1.2;}
+.lb-cn{font-family:var(--fb);font-size:.73rem;font-weight:600;color:var(--text);}
+.lb-meta{font-family:var(--fm);font-size:.5rem;color:var(--text3);margin-top:2px;letter-spacing:.06em;}
+.lb-track{height:8px;background:var(--el);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+.lb-fill{height:100%;border-radius:4px;width:0;transition:width .72s cubic-bezier(.16,1,.3,1);}
+.lb-sc{font-family:var(--fm);font-size:1.1rem;font-weight:600;text-align:right;line-height:1.1;}
+.lb-sc-sub{font-family:var(--fm);font-size:.48rem;color:var(--text4);text-align:right;letter-spacing:.05em;}
+.compare-panel{position:absolute;top:0;left:0;bottom:0;width:460px;background:var(--card);border-right:1px solid var(--border);overflow-y:auto;transform:translateX(-100%);transition:transform .25s cubic-bezier(.16,1,.3,1);z-index:101;box-shadow:6px 0 22px rgba(26,22,18,.13);}
+.compare-panel.open{transform:translateX(0);}
+.cmp-hdr{padding:13px 15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:8px;position:sticky;top:0;background:var(--card);z-index:2;}
+.cmp-body{padding:12px 15px 20px;}
+.cmp-tbl{width:100%;border-collapse:collapse;font-family:var(--fm);font-size:.6rem;margin-top:4px;}
+.cmp-tbl th{text-align:right;padding:5px 6px;color:var(--text3);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--border);font-weight:600;}
+.cmp-tbl th:first-child{text-align:left;}
+.cmp-tbl td{padding:6px;border-bottom:1px solid rgba(26,22,18,.05);vertical-align:middle;color:var(--text2);}
+.cmp-tbl td:first-child{color:var(--text3);font-size:.55rem;}
+.cmp-tbl td:not(:first-child){text-align:right;white-space:nowrap;}
+.cmp-tbl tr:last-child td{border-bottom:none;}
+.cmp-badge{font-family:var(--fm);font-size:.54rem;background:rgba(58,112,200,.1);border:1px solid rgba(58,112,200,.35);color:var(--blue);padding:3px 10px;border-radius:3px;display:none;align-items:center;gap:5px;cursor:pointer;}
+.cmp-badge:hover{background:rgba(58,112,200,.18);}
 @media(max-width:1100px){.charts{grid-template-columns:1fr 1fr;}.charts .cc:last-child{grid-column:1/-1;}}
-@media(max-width:700px){.charts{grid-template-columns:1fr;}.hdr-title h1{font-size:1.7rem;}.country-panel{width:100%;}.cite-wrap{grid-template-columns:1fr;}.cite-eyebrow{border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:14px;}}
+.gap-lbl{font-family:var(--fm);font-size:.53rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;}
+.gap-metric{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:12px 14px;text-align:center;}
+.gap-mval{font-family:var(--fm);font-size:1.35rem;font-weight:600;line-height:1;margin-bottom:4px;}
+.gap-mlbl{font-family:var(--fm);font-size:.51rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;}
+.gap-msub{font-family:var(--fm);font-size:.49rem;color:var(--text4);margin-top:3px;}
+.gap-bar-outer{position:relative;height:38px;margin:14px 0 6px;}
+.gap-bar-track{height:100%;background:var(--el);border-radius:4px;overflow:hidden;display:flex;}
+.gap-seg{height:100%;transition:width .65s cubic-bezier(.16,1,.3,1);}
+.gap-mark{position:absolute;top:0;bottom:0;width:2px;background:var(--orange);border-radius:1px;pointer-events:none;}
+.gap-mark-tip{position:absolute;bottom:calc(100% + 5px);font-family:var(--fm);font-size:.48rem;color:var(--orange);transform:translateX(-50%);white-space:nowrap;background:var(--card);padding:1px 5px;border-radius:2px;border:1px solid rgba(196,122,34,.3);}
+.gap-interp{font-family:var(--fb);font-size:.73rem;color:var(--text2);line-height:1.68;padding:11px 14px;background:var(--bg);border-radius:4px;border:1px solid var(--border);margin-top:12px;}
+/* ── TAB NAV ────────────────────────────────────────────────────── */
+.tab-nav{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(26,22,18,.07);}
+.tab-row{display:flex;overflow-x:auto;gap:0;scrollbar-width:none;}
+.tab-row::-webkit-scrollbar{display:none;}
+.tab-btn{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;background:none;border:none;border-bottom:2.5px solid transparent;margin-bottom:-1px;color:var(--text3);cursor:pointer;white-space:nowrap;transition:color .14s,border-color .14s;display:flex;align-items:center;gap:7px;}
+.tab-btn:hover{color:var(--text2);background:var(--bg);}
+.tab-btn.active{color:var(--amber);border-bottom-color:var(--amber);background:rgba(139,30,44,.03);}
+.tab-ico{font-size:.8rem;line-height:1;}
+/* ── PAGE LAYOUT ─────────────────────────────────────────────────── */
+#page-wrap{display:flex;flex-direction:column;}
+#sec-stats{order:1;}
+#sec-map{order:2;}
+#sec-charts{order:3;}
+#sec-db{order:4;}
+@media(max-width:700px){.charts{grid-template-columns:1fr;}.hdr-title h1{font-size:1.7rem;}.country-panel{width:100%;}.cite-wrap{grid-template-columns:1fr;}.cite-eyebrow{border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:14px;}#gapGrid{grid-template-columns:1fr!important;}}
 </style>
 </head>
 <body>
@@ -156,26 +206,74 @@ footer{border-top:1px solid var(--border);padding:14px 0;margin-top:4px;backgrou
 </div>
 </header>
 
+<nav class="tab-nav">
+  <div class="container">
+    <div class="tab-row">
+      <button class="tab-btn active" data-tab="atlas"   onclick="switchTab('atlas')"><span class="tab-ico">⚡</span> Atlas</button>
+      <button class="tab-btn"        data-tab="gap"     onclick="switchTab('gap')"><span class="tab-ico">◎</span> Gap Calculator</button>
+      <button class="tab-btn"        data-tab="compare" onclick="switchTab('compare')"><span class="tab-ico">⊕</span> Compare Countries</button>
+      <button class="tab-btn"        data-tab="sri"     onclick="switchTab('sri')"><span class="tab-ico">★</span> Readiness Index</button>
+    </div>
+  </div>
+</nav>
+
+<div id="page-wrap">
+
+<div id="sec-stats" class="tab-section">
 <div class="container">
   <div class="stats" id="statsRow"></div>
   <div class="reg-row" id="regRow"></div>
+</div>
+</div>
+
+<div id="sec-charts" class="tab-section">
+<div class="container">
+  <div class="sh"><div class="sh-line"></div><span class="sh-txt">Charts &amp; Analysis</span><div class="sh-line"></div></div>
   <div class="charts">
     <div class="cc"><div class="ct">Top 10 — BESS Energy (GWh)</div><div class="cw"><canvas id="chartBESS"></canvas></div></div>
     <div class="cc"><div class="ct">Top 10 — Pumped Hydro Power (GW)</div><div class="cw"><canvas id="chartPHS"></canvas></div></div>
     <div class="cc"><div class="ct">Storage Maturity by Region</div><div class="cw"><canvas id="chartMat"></canvas></div></div>
+    <div class="cc" style="grid-column:1/-1">
+      <div class="ct" style="justify-content:space-between;flex-wrap:wrap;gap:6px">
+        <span>Storage Adequacy vs. Renewable Penetration</span>
+        <span style="font-size:.5rem;color:var(--text4);font-weight:normal;letter-spacing:.05em;text-transform:none">Bubble size = Total storage (BESS + PHS GWh) · Click any bubble to open country detail</span>
+      </div>
+      <div id="scatterLegend" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px;min-height:20px;"></div>
+      <div style="position:relative;height:440px"><canvas id="chartScatter"></canvas></div>
+      <div style="font-family:var(--fm);font-size:.5rem;color:var(--text4);margin-top:9px;line-height:1.75">
+        X-axis: renewable electricity share (% of total generation, incl. hydro) — end-2024/early-2025 estimate. Y-axis: BESS energy (GWh) per GW of installed renewable capacity — a proxy for battery storage adequacy. Countries with high RE penetration but low Y-values typically rely on hydro reservoirs, pumped storage or interconnectors for flexibility rather than BESS. Bubble size encodes total grid-scale storage (BESS + PHS GWh). Dashed lines at 40 % RE and 0.15 GWh/GW separate quadrants. Renewable capacity estimates: IEA / IRENA 2024. Storage data: end-2024 as reported elsewhere in this Atlas.
+      </div>
+    </div>
+
+    <div class="cc" style="grid-column:1/-1">
+      <div class="ct" style="justify-content:space-between;flex-wrap:wrap;gap:6px">
+        <span>BESS Deployment vs. Pipeline — The Race to Build</span>
+        <span style="font-size:.5rem;color:var(--text4);font-weight:normal;letter-spacing:.05em;text-transform:none">Bubble size = Pumped hydro capacity (GW) · Colour = region · Click bubble to open country detail</span>
+      </div>
+      <div id="pipelineLegend" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px;min-height:20px;"></div>
+      <div style="position:relative;height:500px"><canvas id="chartPipeline"></canvas></div>
+      <div style="font-family:var(--fm);font-size:.5rem;color:var(--text4);margin-top:9px;line-height:1.75">
+        X-axis (log scale): deployed grid-scale BESS energy (GWh, end-2024 estimate). Y-axis: BESS capacity currently under construction (GW). Bubble size encodes pumped hydro power capacity (GW); countries without PHS appear as minimum-size circles. Quadrant midlines at 3 GWh deployed (X) and 3 GW under construction (Y). Countries with zero deployed BESS are excluded from the log-scale X-axis. Data: end-2024 / early-2025 estimates as reported in this Atlas.
+      </div>
+    </div>
   </div>
-  <div class="sh"><div class="sh-line"></div><span class="sh-txt">World Map — Click a country for details</span><div class="sh-line"></div></div>
+</div>
 </div>
 
+<div id="sec-map" class="tab-section">
 <div class="container" style="padding-bottom:14px;">
+  <div class="sh"><div class="sh-line"></div><span class="sh-txt">World Map — Click for detail · ⇧ Shift+click to compare</span><div class="sh-line"></div></div>
   <div class="map-outer" id="mapOuter">
     <div class="map-controls">
       <span class="map-ctrl-label">Colour by:</span>
-      <button class="mode-btn active" onclick="setMode('bess',this)">BESS Capacity (GWh)</button>
+      <button class="mode-btn active" onclick="setMode('bessGW',this)">BESS Capacity (GW)</button>
+      <button class="mode-btn" onclick="setMode('bess',this)">BESS Energy (GWh)</button>
       <button class="mode-btn" onclick="setMode('phs',this)">Pumped Hydro (GW)</button>
+      <button class="mode-btn" onclick="setMode('phsGWh',this)">Pumped Hydro (GWh)</button>
       <button class="mode-btn" onclick="setMode('total',this)">Total Flexibility</button>
       <button class="mode-btn" onclick="setMode('maturity',this)">Maturity Level</button>
-      <span class="map-hint">Scroll to zoom · Click for detail panel</span>
+      <span class="map-hint">Click for detail · <strong style="font-weight:600">⇧ Shift+click</strong> to compare up to 3</span>
+      <span id="cmpBadge" class="cmp-badge" onclick="document.getElementById('comparePanel').classList.toggle('open')" title="Click to show/hide compare panel"></span>
     </div>
     <svg id="mapSvg"></svg>
     <div class="map-legend" id="mapLegend"></div>
@@ -186,9 +284,149 @@ footer{border-top:1px solid var(--border);padding:14px 0;margin-top:4px;backgrou
       </div>
       <div class="cp-body" id="cpBody"></div>
     </div>
+
+    <!-- COMPARE PANEL — slides in from left -->
+    <div class="compare-panel" id="comparePanel">
+      <div class="cmp-hdr">
+        <div style="flex:1;min-width:0">
+          <div style="font-family:var(--fm);font-size:.52rem;color:var(--text3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">Compare Countries</div>
+          <div id="cmpChips" style="display:flex;gap:6px;flex-wrap:wrap;min-height:24px"></div>
+        </div>
+        <button class="cp-close" onclick="closeCompare()" style="flex-shrink:0">✕ Clear</button>
+      </div>
+      <div class="cmp-body">
+        <div id="cmpEmpty" style="font-family:var(--fm);font-size:.58rem;color:var(--text3);text-align:center;padding:20px 8px;line-height:1.7">
+          Hold <kbd style="font-family:var(--fm);font-size:.56rem;background:var(--el);border:1px solid var(--border);padding:1px 6px;border-radius:2px">Shift</kbd> and click countries on the map to compare — up to 3 at once.
+        </div>
+        <div id="cmpChart" style="display:none">
+          <div style="max-width:280px;margin:0 auto">
+            <canvas id="radarChart"></canvas>
+          </div>
+          <div style="font-family:var(--fm);font-size:.48rem;color:var(--text4);text-align:center;margin-top:2px;padding-bottom:10px">Axes log-normalised 0–100 · 100 = global leader</div>
+          <div class="cp-divider"></div>
+          <div id="cmpStats"></div>
+          <div class="cp-divider" style="margin-top:8px"></div>
+          <div style="font-family:var(--fm);font-size:.49rem;color:var(--text4);line-height:1.7;padding-top:4px">Shift+click a highlighted country to deselect it. Regular click opens its full detail panel. Press <kbd style="font-size:.48rem;background:var(--el);border:1px solid var(--border);padding:1px 5px;border-radius:2px">Esc</kbd> to close all panels.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+</div>
 
+<div id="sec-sri" class="tab-section" style="display:none">
+<div class="container">
+  <div class="sh"><div class="sh-line"></div><span class="sh-txt">Storage Readiness Index — Country Rankings</span><div class="sh-line"></div></div>
+  <div class="lb-outer">
+    <!-- Methodology legend -->
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:11px 16px;border-bottom:1px solid var(--border);background:var(--bg)">
+      <span style="font-family:var(--fm);font-size:.52rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;margin-right:4px">Score weights:</span>
+      <span style="font-family:var(--fm);font-size:.54rem;color:var(--text2);display:flex;align-items:center;gap:4px"><span style="width:20px;height:5px;border-radius:2px;background:var(--green);display:inline-block"></span>BESS GWh <span style="color:var(--text4)">30 pts</span></span>
+      <span style="font-family:var(--fm);font-size:.54rem;color:var(--text2);display:flex;align-items:center;gap:4px"><span style="width:20px;height:5px;border-radius:2px;background:var(--blue);display:inline-block"></span>PHS GW <span style="color:var(--text4)">20 pts</span></span>
+      <span style="font-family:var(--fm);font-size:.54rem;color:var(--text2);display:flex;align-items:center;gap:4px"><span style="width:20px;height:5px;border-radius:2px;background:var(--amber);display:inline-block"></span>Maturity <span style="color:var(--text4)">20 pts</span></span>
+      <span style="font-family:var(--fm);font-size:.54rem;color:var(--text2);display:flex;align-items:center;gap:4px"><span style="width:20px;height:5px;border-radius:2px;background:var(--orange);display:inline-block"></span>DR Status <span style="color:var(--text4)">15 pts</span></span>
+      <span style="font-family:var(--fm);font-size:.54rem;color:var(--text2);display:flex;align-items:center;gap:4px"><span style="width:20px;height:5px;border-radius:2px;background:var(--teal);display:inline-block"></span>Pipeline <span style="color:var(--text4)">15 pts</span></span>
+      <span style="font-family:var(--fm);font-size:.49rem;color:var(--text4);margin-left:auto">Log-normalised · max≈100 · click row to open country</span>
+    </div>
+    <!-- Controls -->
+    <div class="lb-ctrl">
+      <select class="fsel" id="lbReg" onchange="renderLB()"><option value="">All Regions</option><option>North America</option><option>Europe</option><option>Asia-Pacific</option><option>Latin America</option><option>Middle East & Africa</option></select>
+      <select class="fsel" id="lbMat" onchange="renderLB()"><option value="">All Maturity</option><option>Leader</option><option>Advanced</option><option>Active</option><option>Emerging</option><option>Early Stage</option></select>
+      <button class="mode-btn" id="lbAllBtn" onclick="lbToggleAll()">Show all countries</button>
+      <span id="lbCount" style="font-family:var(--fm);font-size:.56rem;color:var(--text3);margin-left:auto"></span>
+    </div>
+    <!-- Ranked rows -->
+    <div id="lbRows"></div>
+  </div>
+  <div style="font-family:var(--fm);font-size:.5rem;color:var(--text4);margin-top:8px;line-height:1.75;padding-bottom:4px">
+    Storage Readiness Index (SRI): composite 0–100 score from five log-normalised components. BESS GWh normalised to China (168 GWh, global max). PHS GW normalised to China (58.7 GW). Pipeline normalised to China (50 GW under construction). DR ordinal: Established=4, Growing=3, Nascent=2, None=1 → mapped 0–1. Maturity ordinal: Leader=5, Advanced=4, Active=3, Emerging=2, Early Stage=1 → mapped 0–1. Weights: BESS 30 pts · PHS 20 pts · Maturity 20 pts · DR 15 pts · Pipeline 15 pts. All data end-2024/early-2025. Index methodology © S. Küfeoğlu 2026.
+  </div>
+</div>
+</div>
+
+<div id="sec-gap" class="tab-section" style="display:none">
+<!-- ── STORAGE GAP CALCULATOR ─────────────────────────────────────────────── -->
+<div class="container">
+  <div class="sh"><div class="sh-line"></div><span class="sh-txt">Storage Gap Calculator</span><div class="sh-line"></div></div>
+  <div class="cc">
+    <div class="ct">Storage Deployment Gap — Scenario Modeller</div>
+    <div id="gapGrid" style="display:grid;grid-template-columns:300px 1fr;gap:28px 44px;align-items:start">
+
+      <!-- LEFT: Controls -->
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <div>
+          <div class="gap-lbl" style="margin-bottom:6px">Country</div>
+          <select id="gapCountry" class="fsel" onchange="updateGap()" style="width:100%;font-size:.62rem;padding:7px 10px"></select>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+            <span class="gap-lbl">Renewable Target</span>
+            <span id="gapTargetVal" style="font-family:var(--fm);font-size:.72rem;color:var(--amber);font-weight:600">80%</span>
+          </div>
+          <input type="range" id="gapTarget" min="5" max="100" value="80" step="1" oninput="updateGap()" style="width:100%">
+          <div style="display:flex;justify-content:space-between;font-family:var(--fm);font-size:.48rem;color:var(--text4);margin-top:3px">
+            <span>5%</span><span id="gapCurrentRE" style="color:var(--blue)"></span><span>100%</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+            <span class="gap-lbl">Storage Duration</span>
+            <span id="gapDurVal" style="font-family:var(--fm);font-size:.72rem;color:var(--amber);font-weight:600">4 h</span>
+          </div>
+          <input type="range" id="gapDur" min="1" max="12" value="4" step="0.5" oninput="updateGap()" style="width:100%">
+          <div style="display:flex;justify-content:space-between;font-family:var(--fm);font-size:.48rem;color:var(--text4);margin-top:3px">
+            <span>1 h — peak-shave</span><span>12 h — deep storage</span>
+          </div>
+        </div>
+
+        <div style="background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:12px 14px">
+          <div style="font-family:var(--fm);font-size:.54rem;color:var(--text2);font-weight:600;margin-bottom:6px">Formula</div>
+          <div style="font-family:var(--fm);font-size:.56rem;color:var(--text3);line-height:1.75">
+            Required (GWh) = Target RE capacity (GW) × Duration (h)
+          </div>
+          <div style="font-family:var(--fm);font-size:.5rem;color:var(--text4);margin-top:7px;line-height:1.65">
+            Target RE capacity estimated by scaling current installed capacity proportionally to the target generation share. IEA/NREL grid integration rule-of-thumb. Does not account for hydro reservoir, interconnector, or demand response flexibility.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Dynamic output -->
+      <div id="gapOutput">
+        <div style="font-family:var(--fs);font-size:.9rem;color:var(--text4);text-align:center;padding:60px 0;font-style:italic">
+          Select a country above to calculate its storage gap.
+        </div>
+      </div>
+
+    </div>
+    <div style="font-family:var(--fm);font-size:.5rem;color:var(--text4);margin-top:16px;line-height:1.75;border-top:1px solid var(--border);padding-top:10px">
+      Indicative BESS capital cost: US$150/kWh (utility-scale, 2024 benchmark, source: BloombergNEF / BNEF). Current renewable share and installed capacity: IEA/IRENA 2024 estimates. Current storage totals from this Atlas (end-2024). Figures are scenario estimates for planning purposes only — actual requirements depend on grid topology, dispatch characteristics, existing flexibility mix and demand patterns.
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="sec-compare" class="tab-section" style="display:none">
+<div class="container" style="padding-bottom:24px">
+  <div class="sh"><div class="sh-line"></div><span class="sh-txt">Compare Countries</span><div class="sh-line"></div></div>
+  <div class="cc">
+    <div class="ct">Country Comparison — Radar Chart &amp; Metrics</div>
+    <div id="cmpTabState">
+      <div style="text-align:center;padding:48px 20px">
+        <div style="font-size:2.4rem;margin-bottom:14px;opacity:.5">⊕</div>
+        <div style="font-family:var(--fs);font-size:1rem;color:var(--text2);margin-bottom:8px;font-style:italic">No countries selected yet</div>
+        <div style="font-family:var(--fm);font-size:.6rem;color:var(--text3);line-height:1.75;max-width:400px;margin:0 auto 18px">Switch to the <strong>Atlas</strong> tab, then hold <kbd style="background:var(--el);border:1px solid var(--border);padding:1px 7px;border-radius:2px">Shift</kbd> and click up to 3 countries on the map to compare them here.</div>
+        <button onclick="switchTab('atlas')" style="font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;background:var(--amber);color:#fff;border:none;padding:9px 22px;border-radius:4px;cursor:pointer">Go to Atlas →</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="sec-db" class="tab-section">
 <div class="container">
   <div class="sh"><div class="sh-line"></div><span class="sh-txt">Storage Database</span><div class="sh-line"></div></div>
   <div class="tbl-controls">
@@ -216,6 +454,10 @@ footer{border-top:1px solid var(--border);padding:14px 0;margin-top:4px;backgrou
   </div>
   <div id="noData" class="no-data" style="display:none">No countries match the selected filters.</div>
 </div>
+</div>
+</div>
+
+</div><!-- end page-wrap -->
 
 <footer>
 <div class="container">
@@ -897,6 +1139,14 @@ FDATA.forEach(d => { dataLookup[d.id.padStart(3,'0')] = d; dataLookup[d.id] = d;
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
 function fmt(v,unit=''){return v>=1000?(v/1000).toFixed(1)+'K':v+unit;}
+function bessGWColor(gw){
+  if(gw>=50) return '#155a35';
+  if(gw>=10) return '#2a7a4e';
+  if(gw>=2)  return '#3e9e6a';
+  if(gw>=0.5)return '#6cbf90';
+  if(gw>0)   return '#c47a22';
+  return '#b8b0a0';
+}
 function bessColor(gwh){
   if(gwh>=50) return '#155a35';
   if(gwh>=10) return '#2a7a4e';
@@ -912,6 +1162,14 @@ function phsColor(gw){
   if(v>=1)  return '#3a70c8';
   if(v>=0.2)return '#6494d8';
   if(v>0)   return '#a8c4ec';
+  return '#b8b0a0';
+}
+function phsGWhColor(gwh){
+  if(gwh>=500) return '#1a2e6e';
+  if(gwh>=100) return '#2a4a9e';
+  if(gwh>=20)  return '#3a70c8';
+  if(gwh>=5)   return '#6494d8';
+  if(gwh>0)    return '#a8c4ec';
   return '#b8b0a0';
 }
 function totalColor(d){
@@ -938,13 +1196,15 @@ function drBadge(s){
 }
 
 // ── MAP ───────────────────────────────────────────────────────────────────────
-let colorMode='bess', pathSel;
+let colorMode='bessGW', pathSel;
 function getColor(d){
   const rec=dataLookup[String(d.id).padStart(3,'0')];
   if(!rec) return '#d8cdb8';
-  if(colorMode==='bess') return bessColor(rec.bessGWh||0);
-  if(colorMode==='phs')  return phsColor(rec.phsMW||0);
-  if(colorMode==='total')return totalColor(rec);
+  if(colorMode==='bessGW') return bessGWColor((rec.bessMW||0)/1000);
+  if(colorMode==='bess')   return bessColor(rec.bessGWh||0);
+  if(colorMode==='phs')    return phsColor(rec.phsMW||0);
+  if(colorMode==='phsGWh') return phsGWhColor(rec.phsGWh||0);
+  if(colorMode==='total')  return totalColor(rec);
   return matColor(rec.maturity);
 }
 function setMode(m,btn){
@@ -957,8 +1217,10 @@ function setMode(m,btn){
 function buildMapLegend(){
   const leg=document.getElementById('mapLegend');
   const configs={
-    bess:{label:'BESS Energy Capacity',items:[{c:'#155a35',l:'>50 GWh'},{c:'#2a7a4e',l:'10–50 GWh'},{c:'#3e9e6a',l:'2–10 GWh'},{c:'#6494d8',l:'0.5–2 GWh'},{c:'#c47a22',l:'>0 GWh'},{c:'#b8b0a0',l:'None/No data'}]},
-    phs:{label:'Pumped Hydro Power',items:[{c:'#1a2e6e',l:'>15 GW'},{c:'#2a4a9e',l:'5–15 GW'},{c:'#3a70c8',l:'1–5 GW'},{c:'#6494d8',l:'0.2–1 GW'},{c:'#a8c4ec',l:'<0.2 GW'},{c:'#b8b0a0',l:'None/No data'}]},
+    bessGW:{label:'BESS Power Capacity (GW)',items:[{c:'#155a35',l:'>50 GW'},{c:'#2a7a4e',l:'10–50 GW'},{c:'#3e9e6a',l:'2–10 GW'},{c:'#6cbf90',l:'0.5–2 GW'},{c:'#c47a22',l:'>0 GW'},{c:'#b8b0a0',l:'None/No data'}]},
+    bess:{label:'BESS Energy Capacity (GWh)',items:[{c:'#155a35',l:'>50 GWh'},{c:'#2a7a4e',l:'10–50 GWh'},{c:'#3e9e6a',l:'2–10 GWh'},{c:'#6494d8',l:'0.5–2 GWh'},{c:'#c47a22',l:'>0 GWh'},{c:'#b8b0a0',l:'None/No data'}]},
+    phs:{label:'Pumped Hydro Power Capacity (GW)',items:[{c:'#1a2e6e',l:'>15 GW'},{c:'#2a4a9e',l:'5–15 GW'},{c:'#3a70c8',l:'1–5 GW'},{c:'#6494d8',l:'0.2–1 GW'},{c:'#a8c4ec',l:'<0.2 GW'},{c:'#b8b0a0',l:'None/No data'}]},
+    phsGWh:{label:'Pumped Hydro Energy Capacity (GWh)',items:[{c:'#1a2e6e',l:'>500 GWh'},{c:'#2a4a9e',l:'100–500 GWh'},{c:'#3a70c8',l:'20–100 GWh'},{c:'#6494d8',l:'5–20 GWh'},{c:'#a8c4ec',l:'>0 GWh'},{c:'#b8b0a0',l:'None/No data'}]},
     total:{label:'Total Flexibility (BESS + PHS approx.)',items:[{c:'#155a35',l:'>100 GWh eq.'},{c:'#2a7a4e',l:'20–100 GWh'},{c:'#3e9e6a',l:'5–20 GWh'},{c:'#6494d8',l:'1–5 GWh'},{c:'#c47a22',l:'>0'},{c:'#b8b0a0',l:'None/No data'}]},
     maturity:{label:'Storage Maturity',items:[{c:'#155a35',l:'Leader'},{c:'#2a7a4e',l:'Advanced'},{c:'#c47a22',l:'Active'},{c:'#b83838',l:'Emerging'},{c:'#949498',l:'Early Stage'},{c:'#b8b0a0',l:'No data'}]}
   };
@@ -994,13 +1256,36 @@ async function buildMap(){
       const rec=dataLookup[String(d.id).padStart(3,'0')];
       if(!rec){tip.style.opacity='0';return;}
       d3.select(this).raise().attr('stroke','#1e4fa0').attr('stroke-width',1.8);
-      const bessStr=rec.bessGWh>0?`BESS: ${(rec.bessMW/1000).toFixed(1)} GW / ${rec.bessGWh} GWh`:'BESS: None / Early stage';
-      const phsStr=rec.phsMW>0?`PHS: ${(rec.phsMW/1000).toFixed(1)} GW`:'PHS: None';
-      tip.innerHTML=`<div class="mtt-name">${rec.flag} ${rec.country}</div><div style="color:var(--text3);font-size:.55rem">${rec.region}</div><div style="margin-top:4px;font-size:.62rem">${bessStr}</div><div style="font-size:.58rem;color:var(--text3)">${phsStr}</div><div style="font-size:.58rem;margin-top:2px">${rec.maturity}</div>`;
+      const bessGW=(rec.bessMW/1000).toFixed(1);
+      const bessGWh=rec.bessGWh>0?rec.bessGWh+'GWh':'—';
+      const phsGW=rec.phsMW>0?(rec.phsMW/1000).toFixed(1)+' GW':'—';
+      const phsGWh=rec.phsGWh>0?rec.phsGWh+' GWh':'—';
+      const bessEq=rec.bessGWh||0;
+      const phsEq=(rec.phsMW||0)/1000*8;
+      const totalEq=(bessEq+phsEq).toFixed(0);
+      tip.innerHTML=`<div class="mtt-name">${rec.flag} ${rec.country}</div><div style="color:var(--text3);font-size:.55rem;margin-bottom:5px">${rec.region}</div>`+
+        `<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;font-size:.58rem;">`+
+        `<div style="color:var(--text3)">BESS Capacity</div><div style="font-weight:600;color:${bessGWColor((rec.bessMW||0)/1000)}">${bessGW} GW</div>`+
+        `<div style="color:var(--text3)">BESS Energy</div><div style="font-weight:600;color:${bessColor(rec.bessGWh||0)}">${bessGWh}</div>`+
+        `<div style="color:var(--text3)">PHS Capacity</div><div style="font-weight:600;color:${phsColor(rec.phsMW||0)}">${phsGW}</div>`+
+        `<div style="color:var(--text3)">PHS Energy</div><div style="font-weight:600;color:${phsGWhColor(rec.phsGWh||0)}">${phsGWh}</div>`+
+        `<div style="color:var(--text3)">Total Flexibility</div><div style="font-weight:600;color:${totalColor(rec)}">${totalEq} GWh eq.</div>`+
+        `<div style="color:var(--text3)">Maturity</div><div style="font-weight:600">${rec.maturity}</div>`+
+        `</div>`;
       tip.style.left=(event.clientX+14)+'px';tip.style.top=(event.clientY-10)+'px';tip.style.opacity='1';
     })
-    .on('mouseleave',function(){d3.select(this).attr('stroke','#b0a898').attr('stroke-width',.4);tip.style.opacity='0';})
-    .on('click',function(event,d){const rec=dataLookup[String(d.id).padStart(3,'0')];if(rec)showPanel(rec);});
+    .on('mouseleave',function(event,d){
+      const rec=dataLookup[String(d.id).padStart(3,'0')];
+      const ci=rec?compareSelection.findIndex(r=>r.id===rec.id):-1;
+      d3.select(this).attr('stroke',ci>=0?_CC[ci]:'#b0a898').attr('stroke-width',ci>=0?2.5:.4);
+      tip.style.opacity='0';
+    })
+    .on('click',function(event,d){
+      const rec=dataLookup[String(d.id).padStart(3,'0')];
+      if(!rec)return;
+      if(event.shiftKey){event.stopPropagation();toggleCompare(rec);}
+      else showPanel(rec);
+    });
   g.append('path').datum(borders).attr('d',path).attr('fill','none').attr('stroke','#968b78').attr('stroke-width',.3);
   const zc=svg.append('g').attr('transform',`translate(${W-46},${H-80})`);
   [{sym:'+',dy:0,fn:()=>svg.transition().call(zoom.scaleBy,1.5)},{sym:'−',dy:26,fn:()=>svg.transition().call(zoom.scaleBy,.67)},{sym:'⌂',dy:52,fn:()=>svg.transition().call(zoom.transform,d3.zoomIdentity)}].forEach(b=>{
@@ -1050,7 +1335,854 @@ function showPanel(rec){
   document.getElementById('countryPanel').classList.add('open');
 }
 function closePanel(){document.getElementById('countryPanel').classList.remove('open');}
-document.addEventListener('click',e=>{if(!e.target.closest('#countryPanel')&&!e.target.closest('#mapSvg'))closePanel();});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#countryPanel')&&!e.target.closest('#mapSvg')&&!e.target.closest('#comparePanel'))closePanel();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanel();closeCompare();}});
+
+// ── COMPARISON MODE ───────────────────────────────────────────────────────────
+let compareSelection=[];
+let _radarChart=null;
+const _CC=['#3a70c8','#c47a22','#b83838']; // up to 3 country accent colours
+
+function toggleCompare(rec){
+  const idx=compareSelection.findIndex(r=>r.id===rec.id);
+  if(idx>=0) compareSelection.splice(idx,1);
+  else if(compareSelection.length<3) compareSelection.push(rec);
+  _syncCmpHighlights();
+  _renderCmpPanel();
+  const ct=document.getElementById('sec-compare');
+  if(ct&&ct.style.display!=='none')renderCmpTab();
+}
+
+function _syncCmpHighlights(){
+  // Re-stroke map paths to show selection
+  if(pathSel){
+    pathSel
+      .attr('stroke',function(d){
+        const rec=dataLookup[String(d.id).padStart(3,'0')];
+        if(!rec)return'#b0a898';
+        const i=compareSelection.findIndex(r=>r.id===rec.id);
+        return i>=0?_CC[i]:'#b0a898';
+      })
+      .attr('stroke-width',function(d){
+        const rec=dataLookup[String(d.id).padStart(3,'0')];
+        return rec&&compareSelection.some(r=>r.id===rec.id)?2.5:.4;
+      });
+  }
+  // Badge in controls
+  const badge=document.getElementById('cmpBadge');
+  if(compareSelection.length>0){
+    badge.style.display='inline-flex';
+    badge.textContent=`⊕ ${compareSelection.length} selected`;
+  } else {
+    badge.style.display='none';
+  }
+}
+
+function _renderCmpPanel(){
+  const panel=document.getElementById('comparePanel');
+  const empty=document.getElementById('cmpEmpty');
+  const chart=document.getElementById('cmpChart');
+
+  // Chips strip
+  document.getElementById('cmpChips').innerHTML=compareSelection.map((rec,i)=>`
+    <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:3px;border:1px solid ${_CC[i]}55;background:${_CC[i]}14;font-family:var(--fm);font-size:.58rem;flex-shrink:0">
+      <span style="width:7px;height:7px;border-radius:50%;background:${_CC[i]};display:inline-block;flex-shrink:0"></span>
+      ${rec.flag} ${rec.country}
+      <button onclick="event.stopPropagation();removeCmp('${rec.id}')" style="background:none;border:none;cursor:pointer;color:${_CC[i]};font-size:.72rem;padding:0;margin-left:2px;line-height:1;opacity:.75">✕</button>
+    </span>`).join('');
+
+  if(compareSelection.length===0){panel.classList.remove('open');return;}
+  panel.classList.add('open');
+
+  if(compareSelection.length<2){
+    empty.style.display='block';
+    empty.innerHTML=`<span style="font-family:var(--fm);font-size:.58rem;color:var(--text3)">Shift+click ${3-compareSelection.length} more countr${compareSelection.length===2?'y':'ies'} on the map to activate comparison.</span>`;
+    chart.style.display='none';
+    return;
+  }
+  empty.style.display='none';
+  chart.style.display='block';
+
+  // ── Radar chart ─────────────────────────────────────────────────────────────
+  const maxBGW=Math.max(...FDATA.map(d=>d.bessMW||0))/1000;
+  const maxBGWh=Math.max(...FDATA.map(d=>d.bessGWh||0));
+  const maxPGW=Math.max(...FDATA.map(d=>d.phsMW||0))/1000;
+  const maxPGWh=Math.max(...FDATA.map(d=>d.phsGWh||0));
+  const logN=(v,mx)=>mx>0?Math.min(100,Math.log(v+1)/Math.log(mx+1)*100):0;
+  const DR_S={Established:100,Growing:67,Nascent:33,None:0};
+  const MAT_S={Leader:100,Advanced:75,Active:50,Emerging:25,'Early Stage':0};
+
+  const ctx=document.getElementById('radarChart').getContext('2d');
+  if(_radarChart){_radarChart.destroy();_radarChart=null;}
+  _radarChart=new Chart(ctx,{
+    type:'radar',
+    data:{
+      labels:['BESS GW','BESS GWh','PHS GW','PHS GWh','DR Score','Maturity'],
+      datasets:compareSelection.map((rec,i)=>({
+        label:`${rec.flag} ${rec.country}`,
+        data:[
+          logN(rec.bessMW/1000,maxBGW),
+          logN(rec.bessGWh,maxBGWh),
+          logN((rec.phsMW||0)/1000,maxPGW),
+          logN(rec.phsGWh||0,maxPGWh),
+          DR_S[rec.drStatus]||0,
+          MAT_S[rec.maturity]||0,
+        ],
+        backgroundColor:_CC[i]+'28',
+        borderColor:_CC[i],
+        borderWidth:2,
+        pointBackgroundColor:_CC[i],
+        pointBorderColor:'#fffdf8',
+        pointBorderWidth:1.5,
+        pointRadius:4,
+        pointHoverRadius:6,
+      }))
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:true,
+      plugins:{
+        legend:{
+          display:true,position:'bottom',
+          labels:{font:{family:'JetBrains Mono',size:9},color:'#52483e',padding:10,boxWidth:10,boxHeight:10,usePointStyle:true,pointStyle:'circle'}
+        },
+        tooltip:{
+          callbacks:{
+            label(item){
+              const labels=['BESS GW','BESS GWh','PHS GW','PHS GWh','DR Score','Maturity'];
+              return`${item.dataset.label} — ${labels[item.dataIndex]}: ${item.raw.toFixed(1)}`;
+            }
+          },
+          bodyFont:{family:'JetBrains Mono',size:10},
+          backgroundColor:'rgba(255,253,248,.97)',
+          titleColor:'#8b1e2c',bodyColor:'#52483e',
+          borderColor:'rgba(26,22,18,.18)',borderWidth:1,
+        }
+      },
+      scales:{r:{
+        min:0,max:100,
+        ticks:{display:false,stepSize:25},
+        grid:{color:'rgba(26,22,18,.1)',circular:false},
+        angleLines:{color:'rgba(26,22,18,.12)'},
+        pointLabels:{
+          font:{family:'JetBrains Mono',size:9},
+          color:'#52483e',
+          padding:6,
+        },
+      }}
+    }
+  });
+
+  // ── Stats comparison table ───────────────────────────────────────────────────
+  const dims=[
+    {label:'BESS Capacity', fn:d=>(d.bessMW/1000).toFixed(1)+' GW'},
+    {label:'BESS Energy',   fn:d=>d.bessGWh+' GWh'},
+    {label:'PHS Capacity',  fn:d=>((d.phsMW||0)/1000).toFixed(1)+' GW'},
+    {label:'PHS Energy',    fn:d=>(d.phsGWh||0)+' GWh'},
+    {label:'DR Status',     fn:d=>drBadge(d.drStatus)},
+    {label:'Maturity',      fn:d=>matBadge(d.maturity)},
+    {label:'SRI Score',     fn:d=>{ const s=calcSRI(d); return`<strong style="color:${_sriColor(s.total)}">${s.total.toFixed(1)}</strong>`; }},
+  ];
+  document.getElementById('cmpStats').innerHTML=`
+    <table class="cmp-tbl">
+      <thead><tr>
+        <th></th>
+        ${compareSelection.map((rec,i)=>`<th style="color:${_CC[i]}">${rec.flag} ${rec.country.length>12?rec.country.split(' ')[0]:rec.country}</th>`).join('')}
+      </tr></thead>
+      <tbody>
+        ${dims.map(({label,fn})=>`<tr><td>${label}</td>${compareSelection.map(rec=>`<td>${fn(rec)}</td>`).join('')}</tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+function removeCmp(id){
+  compareSelection=compareSelection.filter(r=>r.id!==id);
+  _syncCmpHighlights();
+  _renderCmpPanel();
+  // Keep compare tab in sync
+  const ct=document.getElementById('sec-compare');
+  if(ct&&ct.style.display!=='none')renderCmpTab();
+}
+
+function closeCompare(){
+  compareSelection=[];
+  _syncCmpHighlights();
+  document.getElementById('comparePanel').classList.remove('open');
+  if(_radarChart){_radarChart.destroy();_radarChart=null;}
+}
+
+// ── TAB SYSTEM ────────────────────────────────────────────────────────────────
+const _TAB={
+  atlas:  ['sec-stats','sec-map','sec-charts','sec-db'],
+  gap:    ['sec-gap'],
+  compare:['sec-compare'],
+  sri:    ['sec-sri'],
+};
+function switchTab(id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  document.querySelectorAll('.tab-section').forEach(s=>{
+    s.style.display=(_TAB[id]||[]).includes(s.id)?'':'none';
+  });
+  if(id==='compare')renderCmpTab();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── COMPARE TAB — standalone full-page view ───────────────────────────────────
+let _radarChartTab=null;
+function renderCmpTab(){
+  const el=document.getElementById('cmpTabState');
+  if(!el)return;
+  // Chips
+  const chipsHtml=compareSelection.length
+    ?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">`+
+      compareSelection.map((rec,i)=>`
+        <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:3px;border:1px solid ${_CC[i]}55;background:${_CC[i]}12;font-family:var(--fm);font-size:.6rem">
+          <span style="width:8px;height:8px;border-radius:50%;background:${_CC[i]};display:inline-block;flex-shrink:0"></span>
+          ${rec.flag} ${rec.country}
+          <button onclick="removeCmp('${rec.id}')" style="background:none;border:none;cursor:pointer;color:${_CC[i]};font-size:.78rem;padding:0;margin-left:3px;line-height:1;opacity:.8">✕</button>
+        </span>`).join('')+
+      `</div>`
+    :'';
+
+  if(compareSelection.length<2){
+    const msg=compareSelection.length===0
+      ?`<div style="font-family:var(--fs);font-size:1rem;color:var(--text2);margin-bottom:8px;font-style:italic">No countries selected yet</div>
+        <div style="font-family:var(--fm);font-size:.6rem;color:var(--text3);line-height:1.75;max-width:400px;margin:0 auto 18px">Switch to the <strong>Atlas</strong> tab, then hold <kbd style="background:var(--el);border:1px solid var(--border);padding:1px 7px;border-radius:2px">Shift</kbd> and click up to 3 countries on the map.</div>
+        <button onclick="switchTab('atlas')" style="font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;background:var(--amber);color:#fff;border:none;padding:9px 22px;border-radius:4px;cursor:pointer">Go to Atlas →</button>`
+      :`<div style="font-family:var(--fm);font-size:.6rem;color:var(--text3)">1 country selected — Shift+click one more on the Atlas tab to activate comparison.</div>
+        <button onclick="switchTab('atlas')" style="margin-top:12px;font-family:var(--fm);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px solid var(--border);color:var(--text2);padding:7px 18px;border-radius:3px;cursor:pointer">Back to Atlas →</button>`;
+    el.innerHTML=chipsHtml+`<div style="text-align:center;padding:36px 20px"><div style="font-size:2.2rem;margin-bottom:12px;opacity:.4">⊕</div>${msg}</div>`;
+    return;
+  }
+
+  // Full comparison
+  const maxBGW=Math.max(...FDATA.map(d=>d.bessMW||0))/1000;
+  const maxBGWh=Math.max(...FDATA.map(d=>d.bessGWh||0));
+  const maxPGW=Math.max(...FDATA.map(d=>d.phsMW||0))/1000;
+  const maxPGWh=Math.max(...FDATA.map(d=>d.phsGWh||0));
+  const logN=(v,mx)=>mx>0?Math.min(100,Math.log(v+1)/Math.log(mx+1)*100):0;
+  const DR_S={Established:100,Growing:67,Nascent:33,None:0};
+  const MAT_S={Leader:100,Advanced:75,Active:50,Emerging:25,'Early Stage':0};
+
+  const dims=[
+    {label:'BESS Capacity',   fn:d=>(d.bessMW/1000).toFixed(1)+' GW'},
+    {label:'BESS Energy',     fn:d=>d.bessGWh+' GWh'},
+    {label:'PHS Capacity',    fn:d=>((d.phsMW||0)/1000).toFixed(1)+' GW'},
+    {label:'PHS Energy',      fn:d=>(d.phsGWh||0)+' GWh'},
+    {label:'Pipeline',        fn:d=>((d.bessConstMW||0)/1000).toFixed(1)+' GW BESS u/c'},
+    {label:'DR Status',       fn:d=>drBadge(d.drStatus)},
+    {label:'Maturity',        fn:d=>matBadge(d.maturity)},
+    {label:'SRI Score',       fn:d=>{const s=calcSRI(d);return`<strong style="font-size:.8rem;color:${_sriColor(s.total)}">${s.total.toFixed(1)}</strong>&thinsp;<span style="color:var(--text4);font-size:.55rem">/100</span>`;}},
+  ];
+
+  el.innerHTML=chipsHtml+`
+    <div style="display:grid;grid-template-columns:minmax(280px,340px) 1fr;gap:36px;align-items:start">
+      <div>
+        <div style="font-family:var(--fm);font-size:.52rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Radar Profile</div>
+        <canvas id="radarChartTab"></canvas>
+        <div style="font-family:var(--fm);font-size:.48rem;color:var(--text4);text-align:center;margin-top:6px">Log-normalised 0–100 · 100 = global leader</div>
+      </div>
+      <div>
+        <div style="font-family:var(--fm);font-size:.52rem;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">Metrics Comparison</div>
+        <table class="cmp-tbl" style="font-size:.62rem">
+          <thead><tr>
+            <th style="text-align:left;padding:6px 8px">Dimension</th>
+            ${compareSelection.map((rec,i)=>`<th style="color:${_CC[i]};padding:6px 8px;font-size:.58rem">${rec.flag} ${rec.country}</th>`).join('')}
+          </tr></thead>
+          <tbody>
+            ${dims.map(({label,fn})=>`<tr>
+              <td style="padding:7px 8px;color:var(--text3);font-size:.56rem">${label}</td>
+              ${compareSelection.map(rec=>`<td style="padding:7px 8px;text-align:right">${fn(rec)}</td>`).join('')}
+            </tr>`).join('')}
+          </tbody>
+        </table>
+        <div style="font-family:var(--fm);font-size:.5rem;color:var(--text4);margin-top:14px;line-height:1.7;border-top:1px solid var(--border);padding-top:10px">Shift+click countries on the Atlas map to add / remove from comparison. Changes reflect here immediately.</div>
+      </div>
+    </div>`;
+
+  // Build radar
+  const ctx=document.getElementById('radarChartTab').getContext('2d');
+  if(_radarChartTab){_radarChartTab.destroy();_radarChartTab=null;}
+  _radarChartTab=new Chart(ctx,{
+    type:'radar',
+    data:{
+      labels:['BESS GW','BESS GWh','PHS GW','PHS GWh','DR Score','Maturity'],
+      datasets:compareSelection.map((rec,i)=>({
+        label:`${rec.flag} ${rec.country}`,
+        data:[logN(rec.bessMW/1000,maxBGW),logN(rec.bessGWh,maxBGWh),logN((rec.phsMW||0)/1000,maxPGW),logN(rec.phsGWh||0,maxPGWh),DR_S[rec.drStatus]||0,MAT_S[rec.maturity]||0],
+        backgroundColor:_CC[i]+'28',borderColor:_CC[i],borderWidth:2.5,
+        pointBackgroundColor:_CC[i],pointBorderColor:'#fffdf8',pointBorderWidth:2,pointRadius:5,pointHoverRadius:7,
+      }))
+    },
+    options:{
+      responsive:true,maintainAspectRatio:true,
+      plugins:{
+        legend:{display:true,position:'bottom',labels:{font:{family:'JetBrains Mono',size:10},color:'#52483e',padding:14,boxWidth:12,usePointStyle:true,pointStyle:'circle'}},
+        tooltip:{callbacks:{label(item){return`${item.dataset.label}: ${item.raw.toFixed(1)}`;}}
+        ,bodyFont:{family:'JetBrains Mono',size:10},backgroundColor:'rgba(255,253,248,.97)',titleColor:'#8b1e2c',bodyColor:'#52483e',borderColor:'rgba(26,22,18,.18)',borderWidth:1}
+      },
+      scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:'rgba(26,22,18,.1)'},angleLines:{color:'rgba(26,22,18,.12)'},pointLabels:{font:{family:'JetBrains Mono',size:10},color:'#52483e',padding:8}}}
+    }
+  });
+}
+
+// ── RENEWABLE DATA LOOKUP ─────────────────────────────────────────────────────
+// renewPct = renewable electricity share (% of total generation, incl. hydro), IEA/IRENA 2024 est.
+// renewGW  = total installed renewable capacity (GW), IRENA 2024 est.
+const _RD=[
+  ["840",22,450],["124",67,100],["484",25,35],
+  ["276",62,170],["826",42,75], ["250",25,75],
+  ["724",57,90], ["380",42,75], ["620",68,20],
+  ["528",35,30], ["56",30,20],  ["208",88,12],
+  ["578",98,42], ["752",90,50], ["246",55,14],
+  ["756",70,20], ["40",78,22],  ["616",25,35],
+  ["203",20,8],  ["300",42,22], ["100",25,8],
+  ["703",28,5],  ["705",42,4],  ["191",52,5],
+  ["348",25,10], ["804",30,15], ["688",35,5],
+  ["440",52,4],  ["442",25,2],  ["156",32,1500],
+  ["36",38,35],  ["392",22,170],["410",9,35],
+  ["702",4,1.5], ["356",21,200],["704",45,25],
+  ["458",23,10], ["360",14,15], ["764",16,15],
+  ["76",88,230], ["152",55,22], ["32",35,20],
+  ["604",62,10], ["170",65,20], ["218",80,8],
+  ["682",5,15],  ["784",8,8],   ["504",25,10],
+  ["710",18,10], ["404",88,3],  ["818",12,12],
+  ["288",35,4],  ["566",20,3],  ["792",43,65],
+  ["643",22,60], ["554",86,9],  ["376",12,7],
+  ["192",20,1],  ["012",5,2],   ["788",8,1],
+  ["834",70,3],  ["591",65,4],  ["364",8,10],
+  ["586",30,15], ["144",48,4],  ["400",28,3],
+  ["214",15,2],  ["340",65,4],
+];
+const RENEW_DATA={};
+_RD.forEach(([id,pct,gw])=>{
+  const obj={renewPct:pct,renewGW:gw};
+  RENEW_DATA[id]=obj;
+  RENEW_DATA[id.replace(/^0+/,'')]=obj;
+  RENEW_DATA[id.padStart(3,'0')]=obj;
+});
+
+// ── SCATTER CHART ─────────────────────────────────────────────────────────────
+function buildScatter(){
+  const matCfg={
+    'Leader':    {bg:'rgba(21,90,53,.82)',    bd:'#155a35'},
+    'Advanced':  {bg:'rgba(42,122,78,.82)',   bd:'#2a7a4e'},
+    'Active':    {bg:'rgba(196,122,34,.82)',  bd:'#c47a22'},
+    'Emerging':  {bg:'rgba(184,56,56,.82)',   bd:'#b83838'},
+    'Early Stage':{bg:'rgba(148,148,152,.82)',bd:'#949498'},
+  };
+  const mats=['Leader','Advanced','Active','Emerging','Early Stage'];
+  const SHORT={'United States':'USA','United Kingdom':'UK','New Zealand':'NZ',
+    'South Korea':'Korea','Saudi Arabia':'S. Arabia','South Africa':'S. Africa',
+    'Dominican Republic':'Dom. Rep.','Sri Lanka':'Sri Lanka'};
+
+  const datasets=mats.map(mat=>{
+    const pts=[];
+    FDATA.forEach(d=>{
+      if(d.maturity!==mat)return;
+      const rd=RENEW_DATA[d.id]||RENEW_DATA[d.id.padStart(3,'0')];
+      if(!rd||rd.renewGW<0.5)return;
+      const y=d.bessGWh/rd.renewGW;
+      const totalGWh=(d.bessGWh||0)+(d.phsGWh||0);
+      const r=Math.max(4,Math.min(28,Math.sqrt(totalGWh)*1.8));
+      pts.push({x:rd.renewPct,y:parseFloat(y.toFixed(4)),r,rec:d,totalGWh,renewPct:rd.renewPct,renewGW:rd.renewGW});
+    });
+    return{label:mat,data:pts,backgroundColor:matCfg[mat].bg,borderColor:matCfg[mat].bd,borderWidth:1.3};
+  });
+
+  // Legend
+  document.getElementById('scatterLegend').innerHTML=
+    mats.map(m=>`<span style="display:flex;align-items:center;gap:5px;font-family:var(--fm);font-size:.54rem;color:var(--text2)"><span style="width:10px;height:10px;border-radius:50%;background:${matCfg[m].bg};border:1.5px solid ${matCfg[m].bd};display:inline-block;flex-shrink:0"></span>${m}</span>`).join('')+
+    `<span style="margin-left:auto;display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.51rem;color:var(--text4)">`+
+    [8,14,21].map((sz,i)=>`<span style="display:inline-flex;align-items:center;gap:4px"><span style="width:${sz}px;height:${sz}px;border-radius:50%;background:rgba(26,22,18,.18);border:1px solid rgba(26,22,18,.25);display:inline-block;flex-shrink:0"></span>${['small','medium','large'][i]} storage</span>`).join('')+
+    `</span>`;
+
+  const ctx=document.getElementById('chartScatter').getContext('2d');
+
+  // Quadrant background + country label plugin
+  const quadPlugin={
+    id:'quad',
+    beforeDraw(chart){
+      const{ctx:c,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;
+      const mx=x.getPixelForValue(40), my=y.getPixelForValue(0.15);
+      c.save();
+      [[left,top,mx,my,'rgba(184,56,56,.032)','Low RE · Low storage',left+7,top+14,'left'],
+       [mx,top,right,my,'rgba(196,122,34,.04)','High RE · Storage gap',right-7,top+14,'right'],
+       [left,my,mx,bottom,'rgba(58,112,200,.032)','Building BESS · Low RE',left+7,bottom-7,'left'],
+       [mx,my,right,bottom,'rgba(42,122,78,.038)','RE + Storage leaders',right-7,bottom-7,'right'],
+      ].forEach(([x1,y1,x2,y2,fill,lbl,tx,ty,ta])=>{
+        c.fillStyle=fill; c.fillRect(x1,y1,x2-x1,y2-y1);
+        c.font='9px "JetBrains Mono",monospace'; c.fillStyle='rgba(26,22,18,.18)';
+        c.textAlign=ta; c.fillText(lbl,tx,ty);
+      });
+      c.strokeStyle='rgba(26,22,18,.12)'; c.setLineDash([4,4]); c.lineWidth=1;
+      c.beginPath();c.moveTo(mx,top);c.lineTo(mx,bottom);c.stroke();
+      c.beginPath();c.moveTo(left,my);c.lineTo(right,my);c.stroke();
+      c.setLineDash([]); c.restore();
+    },
+    afterDraw(chart){
+      const c=chart.ctx; c.save();
+      chart.data.datasets.forEach((ds,di)=>{
+        if(chart.getDatasetMeta(di).hidden)return;
+        ds.data.forEach((pt,pi)=>{
+          if(pt.totalGWh<28&&pt.rec.bessGWh<7&&pt.y<0.24)return;
+          const el=chart.getDatasetMeta(di).data[pi]; if(!el)return;
+          const r=el.options?el.options.radius:pt.r;
+          const nm=SHORT[pt.rec.country]||pt.rec.country.split(' ')[0];
+          c.font='bold 8px "JetBrains Mono",monospace';
+          c.fillStyle='rgba(22,18,14,.7)'; c.textAlign='center';
+          c.fillText(nm,el.x,el.y+r+11);
+        });
+      });
+      c.restore();
+    }
+  };
+
+  const scatterChart=new Chart(ctx,{
+    type:'bubble',
+    plugins:[quadPlugin],
+    data:{datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,clip:false,
+      animation:{duration:700,easing:'easeOutQuart'},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          callbacks:{
+            title(items){return`${items[0].raw.rec.flag} ${items[0].raw.rec.country}`;},
+            label(item){
+              const p=item.raw;
+              return[
+                `Renewable share: ${p.renewPct}%  (installed: ${p.renewGW} GW)`,
+                `BESS: ${p.rec.bessGWh} GWh / ${(p.rec.bessMW/1000).toFixed(1)} GW`,
+                `BESS per GW renewables: ${p.y.toFixed(3)} GWh / GW`,
+                `PHS: ${p.rec.phsGWh||0} GWh  ·  Total storage: ${p.totalGWh.toFixed(0)} GWh`,
+                `Maturity: ${p.rec.maturity}`,
+              ];
+            }
+          },
+          bodyFont:{family:'JetBrains Mono',size:10},
+          titleFont:{family:'Fraunces',size:13,weight:'bold'},
+          backgroundColor:'rgba(255,253,248,.97)',
+          titleColor:'#8b1e2c',bodyColor:'#52483e',
+          borderColor:'rgba(26,22,18,.18)',borderWidth:1,
+          padding:10,displayColors:false,
+        }
+      },
+      scales:{
+        x:{
+          title:{display:true,text:'Renewable Electricity Share (% of total generation, incl. hydro)',font:{family:'JetBrains Mono',size:9},color:'#968b76'},
+          min:0,max:105,
+          ticks:{font:{family:'JetBrains Mono',size:9},color:'#968b76',callback:v=>v+'%'},
+          grid:{color:'rgba(26,22,18,.06)'},
+        },
+        y:{
+          title:{display:true,text:'BESS Energy (GWh) per GW Installed Renewables  →  Storage Adequacy',font:{family:'JetBrains Mono',size:9},color:'#968b76'},
+          min:0,
+          ticks:{font:{family:'JetBrains Mono',size:9},color:'#968b76',callback:v=>v.toFixed(2)},
+          grid:{color:'rgba(26,22,18,.06)'},
+        }
+      },
+      onClick(event,elements){
+        if(elements.length){
+          const{datasetIndex:di,index:pi}=elements[0];
+          showPanel(scatterChart.data.datasets[di].data[pi].rec);
+        }
+      },
+      onHover(event,elements){
+        if(event.native)event.native.target.style.cursor=elements.length?'pointer':'default';
+      }
+    }
+  });
+}
+
+// ── PIPELINE BUBBLE CHART ─────────────────────────────────────────────────────
+function buildPipeline(){
+  const regCfg={
+    'North America':       {bg:'rgba(196,122,34,.84)', bd:'#c47a22'},
+    'Europe':              {bg:'rgba(58,112,200,.84)',  bd:'#3a70c8'},
+    'Asia-Pacific':        {bg:'rgba(42,122,78,.84)',   bd:'#2a7a4e'},
+    'Latin America':       {bg:'rgba(74,138,184,.84)',  bd:'#4a8ab8'},
+    'Middle East & Africa':{bg:'rgba(139,30,44,.84)',   bd:'#8b1e2c'},
+  };
+  const regions=Object.keys(regCfg);
+
+  const datasets=regions.map(reg=>{
+    const pts=[];
+    FDATA.forEach(d=>{
+      if(d.region!==reg)return;
+      if((d.bessGWh||0)<0.04)return; // log scale — must be >0
+      const phsGW=(d.phsMW||0)/1000;
+      const r=phsGW>0?Math.max(7,Math.min(28,Math.sqrt(phsGW)*5.8)):5;
+      pts.push({x:d.bessGWh,y:(d.bessConstMW||0)/1000,r,rec:d,phsGW});
+    });
+    return{label:reg,data:pts,backgroundColor:regCfg[reg].bg,borderColor:regCfg[reg].bd,borderWidth:1.2};
+  });
+
+  // Legend
+  document.getElementById('pipelineLegend').innerHTML=
+    regions.map(r=>`<span style="display:flex;align-items:center;gap:5px;font-family:var(--fm);font-size:.54rem;color:var(--text2)"><span style="width:10px;height:10px;border-radius:50%;background:${regCfg[r].bg};border:1.5px solid ${regCfg[r].bd};display:inline-block;flex-shrink:0"></span>${r}</span>`).join('')+
+    `<span style="margin-left:auto;display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.51rem;color:var(--text4)">`+
+    [5,12,20].map((sz,i)=>`<span style="display:inline-flex;align-items:center;gap:4px"><span style="width:${sz}px;height:${sz}px;border-radius:50%;background:rgba(26,22,18,.18);border:1px solid rgba(26,22,18,.28);display:inline-block;flex-shrink:0"></span>${['no PHS','medium','large'][i]} PHS</span>`).join('')+
+    `</span>`;
+
+  const ctx=document.getElementById('chartPipeline').getContext('2d');
+
+  // Quadrant plugin — shading + labels + flag emoji on every bubble
+  const pipeQuad={
+    id:'pipeQuad',
+    beforeDraw(chart){
+      const{ctx:c,chartArea:{left,right,top,bottom},scales:{x,y}}=chart;
+      const mx=x.getPixelForValue(3);   // 3 GWh X midline (log)
+      const my=y.getPixelForValue(3);   // 3 GW  Y midline (linear)
+      c.save();
+      // Quadrant fills + bold labels
+      [
+        {x1:left,y1:top,   x2:mx,   y2:my,     fill:'rgba(148,148,152,.05)', lbl:'LAGGARDS',   tx:left+10,ty:top+18,    ta:'left'},
+        {x1:mx,  y1:top,   x2:right,y2:my,     fill:'rgba(58,112,200,.04)',  lbl:'ESTABLISHED',tx:right-10,ty:top+18,  ta:'right'},
+        {x1:left,y1:my,    x2:mx,   y2:bottom,  fill:'rgba(196,122,34,.05)', lbl:'BUILDERS',    tx:left+10,ty:bottom-10,ta:'left'},
+        {x1:mx,  y1:my,    x2:right,y2:bottom,  fill:'rgba(42,122,78,.055)', lbl:'RACING',      tx:right-10,ty:bottom-10,ta:'right'},
+      ].forEach(({x1,y1,x2,y2,fill,lbl,tx,ty,ta})=>{
+        c.fillStyle=fill; c.fillRect(x1,y1,x2-x1,y2-y1);
+        c.font='bold 10.5px "JetBrains Mono",monospace';
+        c.fillStyle='rgba(26,22,18,.22)'; c.textAlign=ta;
+        c.fillText(lbl,tx,ty);
+      });
+      // Dashed midlines
+      c.strokeStyle='rgba(26,22,18,.14)'; c.setLineDash([4,5]); c.lineWidth=1;
+      c.beginPath();c.moveTo(mx,top);c.lineTo(mx,bottom);c.stroke();
+      c.beginPath();c.moveTo(left,my);c.lineTo(right,my);c.stroke();
+      c.setLineDash([]); c.restore();
+    },
+    afterDraw(chart){
+      const c=chart.ctx; c.save();
+      chart.data.datasets.forEach((ds,di)=>{
+        if(chart.getDatasetMeta(di).hidden)return;
+        ds.data.forEach((pt,pi)=>{
+          const el=chart.getDatasetMeta(di).data[pi]; if(!el)return;
+          const r=el.options?el.options.radius:pt.r;
+          // Flag emoji centered on bubble
+          const fSize=Math.max(9,Math.min(18,r*1.25));
+          c.font=`${fSize}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",serif`;
+          c.textAlign='center'; c.textBaseline='middle';
+          c.fillText(pt.rec.flag,el.x,el.y);
+        });
+      });
+      c.restore();
+    }
+  };
+
+  const pipeChart=new Chart(ctx,{
+    type:'bubble',
+    plugins:[pipeQuad],
+    data:{datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,clip:false,
+      animation:{duration:750,easing:'easeOutQuart'},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          callbacks:{
+            title(items){return`${items[0].raw.rec.flag} ${items[0].raw.rec.country}`;},
+            label(item){
+              const p=item.raw,d=p.rec;
+              const constGW=((d.bessConstMW||0)/1000).toFixed(1);
+              return[
+                `Deployed BESS: ${d.bessGWh} GWh / ${(d.bessMW/1000).toFixed(1)} GW`,
+                `Under construction: ${constGW} GW`,
+                `Pumped hydro: ${p.phsGW.toFixed(1)} GW`,
+                `Region: ${d.region} · Maturity: ${d.maturity}`,
+              ];
+            }
+          },
+          bodyFont:{family:'JetBrains Mono',size:10},
+          titleFont:{family:'Fraunces',size:13,weight:'bold'},
+          backgroundColor:'rgba(255,253,248,.97)',
+          titleColor:'#8b1e2c',bodyColor:'#52483e',
+          borderColor:'rgba(26,22,18,.18)',borderWidth:1,
+          padding:10,displayColors:false,
+        }
+      },
+      scales:{
+        x:{
+          type:'logarithmic',
+          title:{display:true,text:'Deployed BESS Energy (GWh) — log scale',font:{family:'JetBrains Mono',size:9},color:'#968b76'},
+          min:0.04,
+          ticks:{
+            font:{family:'JetBrains Mono',size:9},color:'#968b76',
+            callback(v){
+              const s=[0.05,0.1,0.2,0.5,1,2,5,10,20,50,100,200];
+              return s.some(n=>Math.abs(v-n)<n*0.015)?(v>=1?v:v.toFixed(v<0.2?2:1)):'';
+            }
+          },
+          grid:{color:'rgba(26,22,18,.06)'},
+        },
+        y:{
+          title:{display:true,text:'BESS Under Construction (GW)',font:{family:'JetBrains Mono',size:9},color:'#968b76'},
+          min:0,
+          ticks:{font:{family:'JetBrains Mono',size:9},color:'#968b76',callback:v=>v?v+' GW':'0'},
+          grid:{color:'rgba(26,22,18,.06)'},
+        }
+      },
+      onClick(event,elements){
+        if(elements.length){
+          const{datasetIndex:di,index:pi}=elements[0];
+          showPanel(pipeChart.data.datasets[di].data[pi].rec);
+        }
+      },
+      onHover(event,elements){
+        if(event.native)event.native.target.style.cursor=elements.length?'pointer':'default';
+      }
+    }
+  });
+}
+
+// ── STORAGE READINESS INDEX ───────────────────────────────────────────────────
+// Weights: BESS GWh 30 | PHS GW 20 | Maturity 20 | DR 15 | Pipeline 15 = 100
+// Each component is log-normalised 0→1 against the global maximum (China)
+let _lbShowAll=false;
+
+function calcSRI(d){
+  const bessR =Math.log((d.bessGWh||0)+1)/Math.log(169);       // China=168 GWh
+  const phsR  =Math.log((d.phsMW||0)/1000+1)/Math.log(59.7);   // China=58.7 GW
+  const drR   ={Established:1,Growing:0.667,Nascent:0.333,None:0}[d.drStatus]||0;
+  const matR  ={Leader:1,Advanced:0.75,Active:0.5,Emerging:0.25,'Early Stage':0}[d.maturity]||0;
+  const pipeR =Math.log((d.bessConstMW||0)/1000+1)/Math.log(51);// China=50 GW
+  const bess=bessR*30,phs=phsR*20,mat=matR*20,dr=drR*15,pipe=pipeR*15;
+  return{total:bess+phs+mat+dr+pipe,bess,phs,mat,dr,pipe};
+}
+
+function _sriColor(s){
+  if(s>=75)return'#155a35';if(s>=55)return'#2a7a4e';
+  if(s>=38)return'#3a70c8';if(s>=22)return'#c47a22';
+  return'#949498';
+}
+
+function lbToggleAll(){
+  _lbShowAll=!_lbShowAll;
+  document.getElementById('lbAllBtn').textContent=_lbShowAll?'Show top 25':'Show all countries';
+  renderLB();
+}
+
+function renderLB(){
+  const reg=document.getElementById('lbReg').value;
+  const mat=document.getElementById('lbMat').value;
+  let rows=FDATA
+    .filter(d=>(!reg||d.region===reg)&&(!mat||d.maturity===mat))
+    .map(d=>({d,s:calcSRI(d)}))
+    .sort((a,b)=>b.s.total-a.s.total);
+  const total=rows.length;
+  if(!_lbShowAll)rows=rows.slice(0,25);
+  document.getElementById('lbCount').textContent=
+    `${rows.length} of ${total} countr${total===1?'y':'ies'} · ranked by SRI`;
+
+  const medals=['','🥇','🥈','🥉'];
+  const compDefs=[
+    {key:'bess',max:30,c:'var(--green)'},
+    {key:'phs', max:20,c:'var(--blue)'},
+    {key:'mat', max:20,c:'var(--amber)'},
+    {key:'dr',  max:15,c:'var(--orange)'},
+    {key:'pipe',max:15,c:'var(--teal)'},
+  ];
+
+  document.getElementById('lbRows').innerHTML=rows.map(({d,s},i)=>{
+    const rank=i+1;
+    const sc=s.total;
+    const col=_sriColor(sc);
+    const rankHtml=rank<=3
+      ?`<span style="font-size:1.15rem;line-height:1">${medals[rank]}</span>`
+      :`<span style="font-family:var(--fm);font-size:.65rem;color:var(--text3)">#${rank}</span>`;
+
+    // 5-component mini-bars (each takes proportional share of total 100pt bar)
+    const compBars=compDefs.map(({key,max,c})=>{
+      const fill=(s[key]/max*100).toFixed(1);
+      const flex=max; // flex-grow proportional to max weight
+      return`<span style="flex:${flex};height:3px;background:var(--el);border-radius:1.5px;overflow:hidden;display:block"><span style="display:block;height:100%;width:${fill}%;background:${c};border-radius:1.5px"></span></span>`;
+    }).join('');
+
+    // Score tier label
+    const tier=sc>=75?'Elite':sc>=55?'Strong':sc>=38?'Moderate':sc>=22?'Developing':'Nascent';
+
+    return`<div class="lb-row" onclick="showPanel(FDATA.find(x=>x.id==='${d.id}'))">
+      <div class="lb-rk" style="text-align:center">${rankHtml}</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-size:.9rem">${d.flag}</span>
+          <span class="lb-cn">${d.country}</span>
+          ${matBadge(d.maturity)}
+        </div>
+        <div class="lb-meta">${d.region}</div>
+      </div>
+      <div>
+        <div class="lb-track"><div class="lb-fill" style="background:${col}" data-w="${sc.toFixed(2)}"></div></div>
+        <div style="display:flex;gap:3px;margin-top:3px">${compBars}</div>
+      </div>
+      <div>
+        <div class="lb-sc" style="color:${col}">${sc.toFixed(1)}</div>
+        <div class="lb-sc-sub">${tier}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Animate bars: start at 0, rAF to trigger transition
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      document.querySelectorAll('#lbRows .lb-fill').forEach(el=>{
+        el.style.width=(el.dataset.w||'0')+'%';
+      });
+    });
+  });
+}
+
+function buildLeaderboard(){renderLB();}
+
+// ── STORAGE GAP CALCULATOR ────────────────────────────────────────────────────
+function buildGapCalc(){
+  const sel=document.getElementById('gapCountry');
+  sel.innerHTML='<option value="">— Select a country —</option>';
+  [...FDATA].sort((a,b)=>a.country.localeCompare(b.country)).forEach(d=>{
+    const o=document.createElement('option');
+    o.value=d.id; o.textContent=`${d.flag} ${d.country}`;
+    sel.appendChild(o);
+  });
+  updateGap(); // render empty state
+}
+
+function updateGap(){
+  const id=document.getElementById('gapCountry').value;
+  const targetPct=+document.getElementById('gapTarget').value;
+  const durH=+document.getElementById('gapDur').value;
+  document.getElementById('gapTargetVal').textContent=targetPct+'%';
+  document.getElementById('gapDurVal').textContent=durH+(durH===1?' h':' h');
+
+  const out=document.getElementById('gapOutput');
+  if(!id){
+    out.innerHTML=`<div style="font-family:var(--fs);font-size:.9rem;color:var(--text4);text-align:center;padding:60px 0;font-style:italic">Select a country above to calculate its storage gap.</div>`;
+    document.getElementById('gapCurrentRE').textContent='';
+    return;
+  }
+
+  const d=FDATA.find(x=>x.id===id);
+  const rd=RENEW_DATA[id]||RENEW_DATA[id.replace(/^0+/,'')]||RENEW_DATA[id.padStart(3,'0')];
+  if(!d){out.innerHTML='<div style="padding:40px;text-align:center;font-family:var(--fm);color:var(--text3)">Country data not found.</div>';return;}
+
+  const hasRD=rd&&rd.renewGW>0;
+  const currentPct=hasRD?rd.renewPct:0;
+  const renewGW=hasRD?rd.renewGW:0;
+
+  // Update slider context label
+  document.getElementById('gapCurrentRE').textContent=hasRD?`Now: ${currentPct}%`:'';
+
+  // Core calculation
+  const belowCurrent=targetPct<currentPct;
+  const effectivePct=Math.max(targetPct,currentPct);
+  const targetRenewGW=renewGW>0?renewGW*(effectivePct/currentPct):0;
+  const requiredGWh=targetRenewGW*durH;
+  const currentBESS=d.bessGWh||0;
+  const currentPHS=d.phsGWh||0;
+  const currentTotal=currentBESS+currentPHS;
+  const gap=Math.max(0,requiredGWh-currentTotal);
+  const surplus=Math.max(0,currentTotal-requiredGWh);
+  const isSurplus=surplus>0;
+  const costBn=gap*0.15; // $150M per GWh
+
+  // Bar geometry (extra 10% padding so bars don't hit edge)
+  const barMax=Math.max(requiredGWh,currentTotal)*1.1||1;
+  const bessW=Math.min(currentBESS/barMax*100,100).toFixed(2);
+  const phsW=Math.min(currentPHS/barMax*100,100-+bessW).toFixed(2);
+  const gapW=Math.min(gap/barMax*100,100-+bessW-+phsW).toFixed(2);
+  const reqPct=Math.min(requiredGWh/barMax*100,99.5).toFixed(2);
+
+  // Format helpers
+  const gwh=v=>{
+    if(v>=1000)return v.toFixed(0)+' GWh';
+    if(v>=10)  return v.toFixed(1)+' GWh';
+    if(v>=1)   return v.toFixed(2)+' GWh';
+    return v.toFixed(3)+' GWh';
+  };
+  const usd=v=>v>=1?'$'+v.toFixed(1)+' bn':v>=0.1?'$'+(v*1000).toFixed(0)+'m':'< $100m';
+
+  const sri=calcSRI(d).total;
+  const sriCol=_sriColor(sri);
+
+  // Contextual notices
+  const warnBand=belowCurrent
+    ?`<div style="font-family:var(--fm);font-size:.54rem;color:var(--blue);background:rgba(58,112,200,.06);border:1px solid rgba(58,112,200,.22);border-radius:3px;padding:7px 11px;margin-bottom:14px">ℹ Target (${targetPct}%) is below current RE share (${currentPct}%) — showing requirements at the current level.</div>`
+    :!hasRD
+    ?`<div style="font-family:var(--fm);font-size:.54rem;color:var(--orange);background:rgba(196,122,34,.06);border:1px solid rgba(196,122,34,.28);border-radius:3px;padding:7px 11px;margin-bottom:14px">⚠ Installed renewable capacity data unavailable — gap estimates are not available for this country.</div>`
+    :'';
+
+  const metBadge=isSurplus?`<span style="font-family:var(--fm);font-size:.54rem;background:rgba(42,122,78,.1);border:1px solid rgba(42,122,78,.35);color:var(--green);padding:3px 9px;border-radius:3px;margin-left:10px;vertical-align:middle">✓ Target met</span>`:'';
+
+  const interpText=isSurplus
+    ?`${d.flag} <strong>${d.country}</strong>'s combined storage (${gwh(currentTotal)}) already <strong style="color:var(--green)">exceeds</strong> the ${effectivePct}% target requirement of ${gwh(requiredGWh)} by ${gwh(surplus)}. No additional storage is needed at this scenario.`
+    :hasRD
+    ?`${d.flag} <strong>${d.country}</strong> would need approximately <strong style="color:var(--amber)">${gwh(requiredGWh)}</strong> of storage to support ${effectivePct}% renewable electricity — a gap of <strong style="color:var(--red)">${gwh(gap)}</strong> versus its current ${gwh(currentTotal)}. Closing this gap with BESS at US$150/kWh implies an indicative investment of approximately <strong>${usd(costBn)}</strong>.`
+    :`${d.flag} <strong>${d.country}</strong> has ${gwh(currentTotal)} of storage deployed. Renewable capacity data is unavailable, so a gap estimate cannot be computed.`;
+
+  out.innerHTML=`
+    <div style="display:flex;align-items:center;gap:14px;padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--border)">
+      <span style="font-size:2.1rem;line-height:1;flex-shrink:0">${d.flag}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:var(--fs);font-size:1.15rem;font-weight:700;color:var(--text);line-height:1.15">${d.country}${metBadge}</div>
+        <div style="font-family:var(--fm);font-size:.54rem;color:var(--text3);margin-top:4px">${d.region} · Current RE <strong style="color:var(--blue)">${currentPct}%</strong> · ${renewGW} GW installed</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-family:var(--fm);font-size:.47rem;color:var(--text4);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px">SRI Score</div>
+        <div style="font-family:var(--fm);font-size:1.15rem;font-weight:600;color:${sriCol};line-height:1">${sri.toFixed(1)}</div>
+        <div style="font-family:var(--fm);font-size:.46rem;color:var(--text4)">/100</div>
+      </div>
+    </div>
+
+    ${warnBand}
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+      <div class="gap-metric" style="border-top:3px solid var(--blue)">
+        <div class="gap-mval" style="color:var(--blue)">${gwh(currentTotal)}</div>
+        <div class="gap-mlbl">Current Storage</div>
+        <div class="gap-msub">BESS ${gwh(currentBESS)} · PHS ${gwh(currentPHS)}</div>
+      </div>
+      <div class="gap-metric" style="border-top:3px solid var(--text3)">
+        <div class="gap-mval" style="color:var(--text)">${hasRD?gwh(requiredGWh):'—'}</div>
+        <div class="gap-mlbl">Required at ${effectivePct}%</div>
+        <div class="gap-msub">${hasRD?targetRenewGW.toFixed(0)+' GW × '+durH+'h':'No RE data'}</div>
+      </div>
+      <div class="gap-metric" style="border-top:3px solid ${isSurplus?'var(--green)':'var(--red)'}">
+        <div class="gap-mval" style="color:${isSurplus?'var(--green)':'var(--red)'}">${hasRD?(isSurplus?'+'+gwh(surplus):gwh(gap)):'—'}</div>
+        <div class="gap-mlbl">${isSurplus?'Surplus':'Storage Gap'}</div>
+        <div class="gap-msub">${hasRD?(isSurplus?'Target already met':'~'+usd(costBn)+' at $150/kWh'):'—'}</div>
+      </div>
+    </div>
+
+    <div style="font-family:var(--fm);font-size:.52rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Deployment snapshot</div>
+    <div class="gap-bar-outer">
+      <div class="gap-bar-track">
+        <div class="gap-seg" style="width:${bessW}%;background:var(--green)"></div>
+        <div class="gap-seg" style="width:${phsW}%;background:var(--blue)"></div>
+        ${hasRD&&!isSurplus?`<div class="gap-seg" style="width:${gapW}%;background:repeating-linear-gradient(-45deg,rgba(184,56,56,.24),rgba(184,56,56,.24) 4px,rgba(184,56,56,.07) 4px,rgba(184,56,56,.07) 10px)"></div>`:''}
+      </div>
+      ${hasRD&&!isSurplus?`<div class="gap-mark" style="left:${reqPct}%"><div class="gap-mark-tip">Target: ${gwh(requiredGWh)}</div></div>`:''}
+    </div>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;font-family:var(--fm);font-size:.54rem;color:var(--text2);margin-top:6px;margin-bottom:2px">
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:8px;border-radius:2px;background:var(--green);display:inline-block"></span>BESS ${gwh(currentBESS)}</span>
+      <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:8px;border-radius:2px;background:var(--blue);display:inline-block"></span>PHS ${gwh(currentPHS)}</span>
+      ${hasRD&&!isSurplus?`<span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:8px;border-radius:2px;background:rgba(184,56,56,.3);border:1px solid rgba(184,56,56,.5);display:inline-block"></span>Gap ${gwh(gap)}</span>`:''}
+      ${hasRD&&isSurplus?`<span style="display:flex;align-items:center;gap:4px;color:var(--green)"><span style="width:14px;height:8px;border-radius:2px;background:rgba(42,122,78,.3);border:1px solid rgba(42,122,78,.5);display:inline-block"></span>Surplus ${gwh(surplus)}</span>`:''}
+      ${hasRD?`<span style="margin-left:auto;display:flex;align-items:center;gap:4px"><span style="width:10px;height:10px;display:inline-block;background:var(--orange);border-radius:1px"></span><span style="color:var(--text3)">Target line</span></span>`:''}
+    </div>
+
+    <div class="gap-interp">${interpText}</div>
+
+    ${hasRD?`<div style="font-family:var(--fm);font-size:.52rem;color:var(--text4);margin-top:8px;line-height:1.65">
+      Target implies <strong style="color:var(--text3)">${targetRenewGW.toFixed(0)} GW</strong> of installed renewables
+      (${effectivePct>currentPct?'+' +(targetRenewGW-renewGW).toFixed(0)+' GW additional':'at current level'}).
+      BESS pipeline: <strong style="color:var(--text3)">${((d.bessConstMW||0)/1000).toFixed(1)} GW</strong> under construction.
+    </div>`:''}
+  `;
+}
 
 // ── STATS ─────────────────────────────────────────────────────────────────────
 function buildStats(){
@@ -1185,7 +2317,7 @@ function render(){
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{
-  buildStats();buildRegional();buildCharts();render();buildMap();
+  buildStats();buildRegional();buildCharts();buildScatter();buildPipeline();buildLeaderboard();buildGapCalc();render();buildMap();
   ['searchInput','regFilter','matFilter','drFilter'].forEach(id=>{
     const el=document.getElementById(id);
     el.addEventListener('input',render);el.addEventListener('change',render);
